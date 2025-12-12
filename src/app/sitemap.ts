@@ -1,0 +1,44 @@
+import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/config/site";
+import { resources } from "@/data/resources";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = SITE_CONFIG.domain;
+
+  const staticPages = [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/prices`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/where-to-buy-1-oz-gold-bars`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/resources`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+  ];
+
+  const resourcePages = resources.map((resource) => ({
+    url: `${baseUrl}/resources/${resource.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...resourcePages];
+}
+
