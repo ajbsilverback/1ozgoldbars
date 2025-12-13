@@ -118,3 +118,4 @@ export function getResourceCategories(): string[] {
   return [...new Set(resources.map((r) => r.category))];
 }
 
+

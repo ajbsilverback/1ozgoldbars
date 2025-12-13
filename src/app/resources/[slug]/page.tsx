@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 import { resources, getResourceBySlug } from "@/data/resources";
 import { getArticleContent } from "@/data/article-content";
 import AISummary from "@/components/AISummary";
@@ -298,6 +298,15 @@ export default async function ResourcePage({ params }: Props) {
                 className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors"
               >
                 <span>View current gold prices</span>
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href="/where-to-buy-1-oz-gold-bars"
+                className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors"
+              >
+                <span>Where to buy 1 oz gold bars</span>
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

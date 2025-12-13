@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 import { resources, getResourceCategories } from "@/data/resources";
 import QASection from "@/components/QASection";
 import { resourcesQA } from "@/data/qa-content";

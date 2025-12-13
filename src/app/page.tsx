@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 import QASection from "@/components/QASection";
 import LiveGbozSpotCard from "@/components/LiveGbozSpotCard";
 import { homeQA } from "@/data/qa-content";

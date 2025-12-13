@@ -15,6 +15,9 @@ export default function NotFound() {
           <Link href="/" className="btn-primary">
             Return Home
           </Link>
+          <Link href="/prices" className="btn-secondary">
+            View Gold Prices
+          </Link>
           <Link href="/resources" className="btn-secondary">
             Browse Resources
           </Link>
@@ -23,4 +26,5 @@ export default function NotFound() {
     </div>
   );
 }
+
 

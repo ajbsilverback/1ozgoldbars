@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export interface QAItem {
   question: string;
@@ -74,4 +74,5 @@ export default function QASection({ items, includeSchema = true }: QASectionProp
     </>
   );
 }
+
 

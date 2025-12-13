@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 import { GoldPriceChart } from "@/components/MonexWidgets";
 import AISummary from "@/components/AISummary";
 import QASection from "@/components/QASection";

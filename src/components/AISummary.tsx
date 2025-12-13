@@ -39,3 +39,4 @@ export default function AISummary({ bullets }: AISummaryProps) {
   );
 }
 
+

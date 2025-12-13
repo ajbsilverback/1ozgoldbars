@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export async function GET() {
   const content = `# ${SITE_CONFIG.brandName}
@@ -153,4 +153,5 @@ Last updated: ${new Date().toISOString().split('T')[0]}
     },
   });
 }
+
 

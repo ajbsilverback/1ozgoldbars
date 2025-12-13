@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_CONFIG } from "@/config/site";
+import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -51,6 +51,14 @@ export default function Footer() {
                   className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
                 >
                   Resources
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
+                >
+                  About
                 </Link>
               </li>
             </ul>

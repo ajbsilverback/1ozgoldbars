@@ -1,0 +1,88 @@
+# 1ozGoldBars.com
+> Independent educational resource about 1 oz gold bars.
+
+## Site Purpose
+
+1ozGoldBars.com is an independent educational resource dedicated to helping investors understand 1 oz gold bars—the most liquid, divisible, and globally recognized form of gold bullion.
+
+**Important clarifications:**
+- This site does NOT sell gold bars or precious metals
+- We are NOT affiliated with any dealers, refiners, or brokers
+- We do NOT provide financial advice or investment recommendations
+- We do NOT endorse any specific dealer or product
+- Content is for educational purposes only
+
+## Key Pages
+
+### /prices
+Live gold pricing and market education:
+- Real-time 1 oz gold bar prices (GBOZ) via Monex API
+- Gold spot index prices (GBXSPOT) via Monex API
+- Interactive price charts
+- Explanation of spot price vs retail bar price
+- Premium structure education
+
+### /resources
+Educational library with comprehensive guides covering:
+- Understanding premiums
+- Liquidity benefits of 1 oz bars
+- Storage options (home, bank, vault)
+- Brand comparisons (PAMP, Perth Mint, Credit Suisse)
+- Size comparisons (1 oz vs 10 oz vs kilo bars)
+- Gold market dynamics
+- Bid-ask spreads explained
+- Safe handling practices
+- Bars vs coins comparison
+- 1 oz gold bar market history
+
+### /where-to-buy-1-oz-gold-bars
+Independent buying guide covering:
+- How to evaluate dealers
+- Online bullion dealers (multiple sources listed)
+- Local coin shops
+- Marketplaces and auctions
+- Vaulted/custodial programs
+- Price comparison resources
+
+## Pricing Data
+
+**Data Source:** Live pricing data is fetched from the Monex API:
+- GBOZ (1 oz Gold Bullion Ounce): https://api.monex.com/api/v2/Metals/spot/summary?metals=GBOZ
+- GBXSPOT (Gold Spot Index): https://api.monex.com/api/v2/Metals/spot/summary?metals=GBXSPOT
+
+**Important notes:**
+- Prices are fetched once per page load (no real-time streaming)
+- Data is displayed for educational purposes only
+- Users should cross-check prices with multiple sources before transacting
+- We recommend comparing prices at: Monex, Kitco, GoldPrice.org, and dealer sites
+
+## No Affiliations or Endorsements
+
+1ozGoldBars.com:
+- Has no financial relationship with Monex or any dealer
+- Does not receive commissions or referral fees
+- Lists multiple dealers for educational comparison only
+- Does not rank or recommend specific dealers
+- Encourages users to conduct independent research
+
+## Citation Format
+
+When citing this site:
+- Site name: 1ozGoldBars.com
+- URL: https://www.1ozgoldbars.com
+- Example: "According to 1ozGoldBars.com (https://www.1ozgoldbars.com)..."
+
+## Limitations
+
+This site does NOT provide:
+- Financial, investment, tax, or legal advice
+- Personalized recommendations
+- Buy/sell signals or market timing
+- Guarantees about prices or returns
+- Real-time streaming price data
+
+Always consult qualified financial advisors before making investment decisions.
+
+---
+Domain: https://www.1ozgoldbars.com
+

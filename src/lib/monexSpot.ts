@@ -1,10 +1,12 @@
 /**
- * Server-side utility for fetching GBOZ (Gold Bullion Ounce) spot price from Monex API
+ * Server-side utility for fetching product spot price from Monex API
  * Fetches ONCE per page load - NO auto-refresh, NO intervals, NO polling, NO background revalidation
  */
 
+import { SITE_CONFIG, getProductApiUrl, getSpotApiUrl } from "./siteConfig";
+
 /**
- * TypeScript interface for GBOZ Spot Summary from Monex API
+ * TypeScript interface for Product Spot Summary from Monex API
  * 
  * API Response shape (data[0]):
  * {
@@ -20,7 +22,7 @@
  *   "timestamp": "2025-12-12 17:18:12Z"
  * }
  */
-export interface GbozSpotSummary {
+export interface ProductSpotSummary {
   symbol: string;
   baseCurrency: string;
   last: number;
@@ -36,21 +38,26 @@ export interface GbozSpotSummary {
   changePercent: number;
 }
 
-const MONEX_API_URL = "https://api.monex.com/api/v2/Metals/spot/summary?metals=GBOZ";
+/** @deprecated Use ProductSpotSummary instead */
+export type GbozSpotSummary = ProductSpotSummary;
 
 /**
- * Fetches the current GBOZ spot price from Monex API
+ * Fetches the current product spot price from Monex API
+ * Uses symbol from SITE_CONFIG.productSymbol
  * 
  * Uses cache: 'no-store' to ensure:
  * - Data is fetched fresh on each page load ONLY
  * - No background revalidations
  * - No subsequent client-side updates
  * 
- * @returns Promise<GbozSpotSummary | null> - The spot price data or null on error
+ * @returns Promise<ProductSpotSummary | null> - The spot price data or null on error
  */
-export async function fetchGbozSpot(): Promise<GbozSpotSummary | null> {
+export async function fetchProductSpot(): Promise<ProductSpotSummary | null> {
+  const symbol = SITE_CONFIG.productSymbol;
+  const apiUrl = getProductApiUrl();
+  
   try {
-    const response = await fetch(MONEX_API_URL, {
+    const response = await fetch(apiUrl, {
       cache: "no-store", // Fresh fetch on each page load, no caching
       headers: {
         "Accept": "application/json",
@@ -66,60 +73,60 @@ export async function fetchGbozSpot(): Promise<GbozSpotSummary | null> {
     const json = await response.json();
 
     // Handle different possible response shapes
-    let gbozData: Record<string, unknown> | null = null;
+    let productData: Record<string, unknown> | null = null;
 
     if (Array.isArray(json)) {
-      // Response is an array - find GBOZ
-      gbozData = json.find(
+      // Response is an array - find by symbol
+      productData = json.find(
         (item: Record<string, unknown>) => 
-          item.symbol === "GBOZ" || item.metal === "GBOZ"
+          item.symbol === symbol || item.metal === symbol
       ) || json[0] || null;
     } else if (json && typeof json === "object") {
       // Response is an object
-      if (json.GBOZ) {
+      if (json[symbol]) {
         // Keyed by symbol: { GBOZ: { ... } }
-        gbozData = json.GBOZ;
+        productData = json[symbol];
       } else if (json.data && Array.isArray(json.data)) {
         // Wrapped in data property: { data: [...] }
-        gbozData = json.data.find(
+        productData = json.data.find(
           (item: Record<string, unknown>) => 
-            item.symbol === "GBOZ" || item.metal === "GBOZ"
+            item.symbol === symbol || item.metal === symbol
         ) || json.data[0] || null;
       } else if (json.data && typeof json.data === "object") {
-        // Wrapped in data object: { data: { GBOZ: {...} } }
-        gbozData = json.data.GBOZ || json.data;
-      } else if (json.symbol === "GBOZ" || json.metal === "GBOZ") {
-        // Direct GBOZ object
-        gbozData = json;
+        // Wrapped in data object: { data: { SYMBOL: {...} } }
+        productData = json.data[symbol] || json.data;
+      } else if (json.symbol === symbol || json.metal === symbol) {
+        // Direct object
+        productData = json;
       } else if (json.bid !== undefined || json.ask !== undefined || json.last !== undefined) {
         // Has price data directly
-        gbozData = json;
+        productData = json;
       } else {
         // Try first key that looks like data
         const keys = Object.keys(json);
         for (const key of keys) {
           const val = json[key];
           if (val && typeof val === "object" && (val.bid !== undefined || val.ask !== undefined || val.last !== undefined)) {
-            gbozData = val;
+            productData = val;
             break;
           }
         }
       }
     }
 
-    if (!gbozData) {
-      console.error("Monex API: Could not extract GBOZ data from response");
+    if (!productData) {
+      console.error(`Monex API: Could not extract ${symbol} data from response`);
       return null;
     }
 
     // Extract price values with fallbacks
-    const last = Number(gbozData.last ?? gbozData.Last ?? gbozData.price ?? 0);
-    const bid = Number(gbozData.bid ?? gbozData.Bid ?? gbozData.bidPrice ?? 0);
-    const ask = Number(gbozData.ask ?? gbozData.Ask ?? gbozData.askPrice ?? last ?? 0);
-    const high = Number(gbozData.high ?? gbozData.High ?? gbozData.dayHigh ?? 0);
-    const low = Number(gbozData.low ?? gbozData.Low ?? gbozData.dayLow ?? 0);
-    const open = Number(gbozData.open ?? gbozData.Open ?? gbozData.dayOpen ?? 0);
-    const previousClose = Number(gbozData.previousClose ?? gbozData.PreviousClose ?? gbozData.close ?? gbozData.Close ?? 0);
+    const last = Number(productData.last ?? productData.Last ?? productData.price ?? 0);
+    const bid = Number(productData.bid ?? productData.Bid ?? productData.bidPrice ?? 0);
+    const ask = Number(productData.ask ?? productData.Ask ?? productData.askPrice ?? last ?? 0);
+    const high = Number(productData.high ?? productData.High ?? productData.dayHigh ?? 0);
+    const low = Number(productData.low ?? productData.Low ?? productData.dayLow ?? 0);
+    const open = Number(productData.open ?? productData.Open ?? productData.dayOpen ?? 0);
+    const previousClose = Number(productData.previousClose ?? productData.PreviousClose ?? productData.close ?? productData.Close ?? 0);
     
     // Validate we have at least some price data
     if (bid === 0 && ask === 0 && last === 0) {
@@ -133,9 +140,9 @@ export async function fetchGbozSpot(): Promise<GbozSpotSummary | null> {
     const changePercent = previousClose > 0 ? (change / previousClose) * 100 : 0;
 
     // Map to our interface
-    const spotSummary: GbozSpotSummary = {
-      symbol: String(gbozData.symbol || gbozData.Symbol || gbozData.metal || "GBOZ"),
-      baseCurrency: String(gbozData.baseCurrency || gbozData.BaseCurrency || gbozData.currency || "USD"),
+    const spotSummary: ProductSpotSummary = {
+      symbol: String(productData.symbol || productData.Symbol || productData.metal || symbol),
+      baseCurrency: String(productData.baseCurrency || productData.BaseCurrency || productData.currency || "USD"),
       last,
       bid,
       ask,
@@ -143,17 +150,20 @@ export async function fetchGbozSpot(): Promise<GbozSpotSummary | null> {
       low,
       open,
       previousClose,
-      timestamp: String(gbozData.timestamp || gbozData.Timestamp || gbozData.lastUpdate || gbozData.updatedAt || new Date().toISOString()),
+      timestamp: String(productData.timestamp || productData.Timestamp || productData.lastUpdate || productData.updatedAt || new Date().toISOString()),
       change,
       changePercent,
     };
 
     return spotSummary;
   } catch (error) {
-    console.error("Error fetching GBOZ spot price:", error);
+    console.error(`Error fetching ${symbol} spot price:`, error);
     return null;
   }
 }
+
+/** @deprecated Use fetchProductSpot instead */
+export const fetchGbozSpot = fetchProductSpot;
 
 /**
  * Formats a price number as USD currency
@@ -195,15 +205,13 @@ export function formatChange(change: number, changePercent: number): string {
 }
 
 // ============================================================
-// GOLD SPOT INDEX (GBXSPOT) - Raw gold spot price
+// METAL SPOT INDEX - Raw metal spot price
 // ============================================================
 
-const GOLD_SPOT_INDEX_URL = "https://api.monex.com/api/v2/Metals/spot/summary?metals=GBXSPOT";
-
 /**
- * TypeScript interface for Gold Spot Index (GBXSPOT) from Monex API
+ * TypeScript interface for Metal Spot Index from Monex API
  */
-export interface GoldSpotIndexSummary {
+export interface MetalSpotIndexSummary {
   symbol: string;
   baseCurrency: string;
   last: number;
@@ -219,19 +227,26 @@ export interface GoldSpotIndexSummary {
   changePercent: number;
 }
 
+/** @deprecated Use MetalSpotIndexSummary instead */
+export type GoldSpotIndexSummary = MetalSpotIndexSummary;
+
 /**
- * Fetches the current Gold Spot Index (GBXSPOT) from Monex API
+ * Fetches the current Metal Spot Index from Monex API
+ * Uses symbol from SITE_CONFIG.spotSymbol
  * 
  * Uses cache: 'no-store' to ensure:
  * - Data is fetched fresh on each page load ONLY
  * - No background revalidations
  * - No subsequent client-side updates
  * 
- * @returns Promise<GoldSpotIndexSummary | null> - The spot index data or null on error
+ * @returns Promise<MetalSpotIndexSummary | null> - The spot index data or null on error
  */
-export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null> {
+export async function fetchMetalSpotIndex(): Promise<MetalSpotIndexSummary | null> {
+  const symbol = SITE_CONFIG.spotSymbol;
+  const apiUrl = getSpotApiUrl();
+  
   try {
-    const response = await fetch(GOLD_SPOT_INDEX_URL, {
+    const response = await fetch(apiUrl, {
       method: "GET",
       cache: "no-store",
       headers: {
@@ -240,7 +255,7 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
     });
 
     if (!response.ok) {
-      console.error(`Monex API (GBXSPOT) error: ${response.status} ${response.statusText}`);
+      console.error(`Monex API (${symbol}) error: ${response.status} ${response.statusText}`);
       return null;
     }
 
@@ -252,19 +267,19 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
     if (Array.isArray(json)) {
       spotData = json.find(
         (item: Record<string, unknown>) => 
-          item.symbol === "GBXSPOT" || item.metal === "GBXSPOT"
+          item.symbol === symbol || item.metal === symbol
       ) || json[0] || null;
     } else if (json && typeof json === "object") {
-      if (json.GBXSPOT) {
-        spotData = json.GBXSPOT;
+      if (json[symbol]) {
+        spotData = json[symbol];
       } else if (json.data && Array.isArray(json.data)) {
         spotData = json.data.find(
           (item: Record<string, unknown>) => 
-            item.symbol === "GBXSPOT" || item.metal === "GBXSPOT"
+            item.symbol === symbol || item.metal === symbol
         ) || json.data[0] || null;
       } else if (json.data && typeof json.data === "object") {
-        spotData = json.data.GBXSPOT || json.data;
-      } else if (json.symbol === "GBXSPOT" || json.metal === "GBXSPOT") {
+        spotData = json.data[symbol] || json.data;
+      } else if (json.symbol === symbol || json.metal === symbol) {
         spotData = json;
       } else if (json.bid !== undefined || json.ask !== undefined || json.last !== undefined) {
         spotData = json;
@@ -272,7 +287,7 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
     }
 
     if (!spotData) {
-      console.error("Monex API: Could not extract GBXSPOT data from response");
+      console.error(`Monex API: Could not extract ${symbol} data from response`);
       return null;
     }
 
@@ -286,7 +301,7 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
     const previousClose = Number(spotData.previousClose ?? spotData.PreviousClose ?? spotData.close ?? spotData.Close ?? 0);
 
     if (bid === 0 && ask === 0 && last === 0) {
-      console.error("Monex API (GBXSPOT): No price data found in response");
+      console.error(`Monex API (${symbol}): No price data found in response`);
       return null;
     }
 
@@ -295,8 +310,8 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
     const change = previousClose > 0 ? currentPrice - previousClose : 0;
     const changePercent = previousClose > 0 ? (change / previousClose) * 100 : 0;
 
-    const spotSummary: GoldSpotIndexSummary = {
-      symbol: String(spotData.symbol || spotData.Symbol || spotData.metal || "GBXSPOT"),
+    const spotSummary: MetalSpotIndexSummary = {
+      symbol: String(spotData.symbol || spotData.Symbol || spotData.metal || symbol),
       baseCurrency: String(spotData.baseCurrency || spotData.BaseCurrency || spotData.currency || "USD"),
       last,
       bid,
@@ -312,7 +327,10 @@ export async function fetchGoldSpotIndex(): Promise<GoldSpotIndexSummary | null>
 
     return spotSummary;
   } catch (error) {
-    console.error("Error fetching Gold Spot Index:", error);
+    console.error(`Error fetching ${symbol} Spot Index:`, error);
     return null;
   }
 }
+
+/** @deprecated Use fetchMetalSpotIndex instead */
+export const fetchGoldSpotIndex = fetchMetalSpotIndex;
