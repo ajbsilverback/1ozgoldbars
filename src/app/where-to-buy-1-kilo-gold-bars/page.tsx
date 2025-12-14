@@ -24,19 +24,19 @@ const onlineDealers = [
     name: "Monex",
     description:
       "A precious metals dealer providing live market data and various gold bar products, including 1 kilo bars from recognized refiners.",
-    url: "https://www.monex.com/gold/",
+    url: "https://www.monex.com/",
   },
   {
     name: "APMEX",
     description:
       "A large online bullion retailer with a wide selection of 1 kilo gold bars from various mints and refiners worldwide.",
-    url: "https://www.apmex.com/category/25403/1-kilo-gold-bars",
+    url: "https://www.apmex.com/",
   },
   {
     name: "Bullion Exchanges",
     description:
       "A New York-based bullion dealer offering 1 kilo gold bars with multiple payment options and competitive pricing.",
-    url: "https://bullionexchanges.com/view-all-gold-bars",
+    url: "https://bullionexchanges.com/",
   },
   {
     name: "Finest Known",
@@ -60,19 +60,19 @@ const onlineDealers = [
     name: "JM Bullion",
     description:
       "An established online precious metals dealer offering 1 kilo gold bars from major refiners including PAMP Suisse, Perth Mint, and Credit Suisse.",
-    url: "https://www.jmbullion.com/gold/gold-bars/kilo-gold-bars/",
+    url: "https://www.jmbullion.com/",
   },
   {
     name: "Kitco",
     description:
       "A long-standing precious metals dealer and data provider offering kilo gold bars alongside comprehensive market information.",
-    url: "https://online.kitco.com/gold-bars",
+    url: "https://www.kitco.com/",
   },
   {
     name: "SD Bullion",
     description:
       "An online dealer known for competitive pricing on bullion products, including 1 kilo gold bars from recognized refiners.",
-    url: "https://sdbullion.com/gold/gold-bars/kilo-gold-bars",
+    url: "https://sdbullion.com/",
   },
 ];
 
