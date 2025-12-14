@@ -5,11 +5,14 @@ import QASection from "@/components/QASection";
 import LiveGbozSpotCard from "@/components/LiveGbozSpotCard";
 import CapitalRequirementsCard from "@/components/CapitalRequirementsCard";
 import { homeQA } from "@/data/qa-content";
-import { fetchProductSpot } from "@/lib/monexSpot";
+import { fetchProductSpot, fetchBarSizePrices, formatRoundedPrice } from "@/lib/monexSpot";
 
 export default async function HomePage() {
   // Fetch price data once for the entire page
-  const priceData = await fetchProductSpot();
+  const [priceData, barSizePrices] = await Promise.all([
+    fetchProductSpot(),
+    fetchBarSizePrices(),
+  ]);
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -346,9 +349,9 @@ export default async function HomePage() {
                 </tr>
                 <tr className="border-b border-gray-800">
                   <td className="py-4 px-6 font-medium">Entry Cost</td>
-                  <td className="py-4 px-6 text-center">~$2,000</td>
-                  <td className="py-4 px-6 text-center">~$20,000</td>
-                  <td className="py-4 px-6 text-center">~$65,000</td>
+                  <td className="py-4 px-6 text-center">{formatRoundedPrice(barSizePrices.oz1)}</td>
+                  <td className="py-4 px-6 text-center">{formatRoundedPrice(barSizePrices.oz10)}</td>
+                  <td className="py-4 px-6 text-center">{formatRoundedPrice(barSizePrices.kilo)}</td>
                 </tr>
                 <tr className="border-b border-gray-800">
                   <td className="py-4 px-6 font-medium">Divisibility</td>

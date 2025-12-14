@@ -334,3 +334,83 @@ export async function fetchMetalSpotIndex(): Promise<MetalSpotIndexSummary | nul
 
 /** @deprecated Use fetchMetalSpotIndex instead */
 export const fetchGoldSpotIndex = fetchMetalSpotIndex;
+
+// ============================================================
+// BAR SIZE COMPARISON - Multiple bar sizes for comparison tables
+// ============================================================
+
+/**
+ * Bar size price data for comparison tables
+ */
+export interface BarSizePrices {
+  oz1: number | null;   // GBOZ - 1 oz bar ask price
+  oz10: number | null;  // GBX10 - 10 oz bar ask price
+  kilo: number | null;  // GBX1K - 1 kilo bar ask price
+}
+
+/**
+ * Fetches ask prices for all three bar sizes (1 oz, 10 oz, 1 kilo)
+ * Used for comparison tables on the home page
+ * 
+ * @returns Promise<BarSizePrices> - Object with ask prices for each size (null if fetch failed)
+ */
+export async function fetchBarSizePrices(): Promise<BarSizePrices> {
+  const symbols = {
+    oz1: "GBOZ",
+    oz10: "GBX10",
+    kilo: "GBX1K",
+  };
+
+  const fetchSymbol = async (symbol: string): Promise<number | null> => {
+    try {
+      const response = await fetch(
+        `https://api.monex.com/api/v2/Metals/spot/summary?metals=${symbol}`,
+        {
+          cache: "no-store",
+          headers: { Accept: "application/json" },
+        }
+      );
+
+      if (!response.ok) return null;
+
+      const json = await response.json();
+      
+      // Handle array response
+      let data: Record<string, unknown> | null = null;
+      if (Array.isArray(json)) {
+        data = json.find((item: Record<string, unknown>) => item.symbol === symbol) || json[0] || null;
+      } else if (json && typeof json === "object") {
+        if (json[symbol]) data = json[symbol];
+        else if (json.data && Array.isArray(json.data)) {
+          data = json.data.find((item: Record<string, unknown>) => item.symbol === symbol) || json.data[0] || null;
+        } else if (json.ask !== undefined) data = json;
+      }
+
+      if (!data) return null;
+      
+      const ask = Number(data.ask ?? data.Ask ?? data.askPrice ?? data.last ?? 0);
+      return ask > 0 ? ask : null;
+    } catch {
+      return null;
+    }
+  };
+
+  // Fetch all three in parallel
+  const [oz1, oz10, kilo] = await Promise.all([
+    fetchSymbol(symbols.oz1),
+    fetchSymbol(symbols.oz10),
+    fetchSymbol(symbols.kilo),
+  ]);
+
+  return { oz1, oz10, kilo };
+}
+
+/**
+ * Rounds a price to the nearest $100 and formats with ~ prefix
+ * Returns "—" if price is null or 0
+ */
+export function formatRoundedPrice(price: number | null): string {
+  if (!price || price <= 0) return "—";
+  const rounded = Math.round(price / 100) * 100;
+  return `~$${rounded.toLocaleString("en-US")}`;
+}
