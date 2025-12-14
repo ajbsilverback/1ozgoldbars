@@ -392,7 +392,7 @@ export default function WhereToBuyPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.ha.com/gold-platinum.s"
+                  href="https://www.ha.com/"
                   target="_blank"
                   rel="nofollow"
                   className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors text-sm"
