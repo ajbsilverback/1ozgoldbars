@@ -435,7 +435,7 @@ export default function WhereToBuyPage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://www.brinks.com/en/services/global-services/precious-metals-services"
+                  href="https://www.brinks.com/"
                   target="_blank"
                   rel="nofollow"
                   className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors text-sm"
@@ -446,7 +446,7 @@ export default function WhereToBuyPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.loomis.com/services/precious-metals-services"
+                  href="https://www.loomis.com/"
                   target="_blank"
                   rel="nofollow"
                   className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors text-sm"
