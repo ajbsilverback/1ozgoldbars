@@ -415,3 +415,5 @@ export function getResourceFAQs(slug: string): ResourceFAQ[] {
   return resourceFAQs[slug] || [];
 }
 
+
+
