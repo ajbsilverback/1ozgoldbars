@@ -10,12 +10,22 @@ export interface ArticleSection {
 
 export interface ArticleContent {
   updatedAt: string;
+  quickSummary: string;
+  keyTakeaways: string[];
   sections: ArticleSection[];
 }
 
 export const resourcesContent: Record<string, ArticleContent> = {
   "what-is-a-1-oz-gold-bar": {
     updatedAt: "2024-12-14",
+    quickSummary: "A 1 oz gold bar contains exactly one troy ounce (31.1035 grams) of refined gold, typically at .9999 purity. These bars are produced by private refiners and trade based on gold content plus a premium over spot price.",
+    keyTakeaways: [
+      "One troy ounce equals 31.1035 grams, heavier than a standard ounce",
+      "Most 1 oz bars are .9999 fine (99.99% pure gold)",
+      "Bars display weight, purity, refiner logo, and often a serial number",
+      "Unlike coins, gold bars have no legal tender status",
+      "LBMA-accredited refiner bars are widely accepted for resale"
+    ],
     sections: [
       {
         heading: "Definition and Weight Standard",
@@ -42,7 +52,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
         heading: "Common Refiners",
         paragraphs: [
           "Several refiners produce widely recognized 1 oz gold bars. These include PAMP Suisse, Valcambi, Argor-Heraeus, Perth Mint, Royal Canadian Mint, and Credit Suisse (now produced by other refiners). Bars from LBMA-accredited refiners are generally accepted worldwide.",
-          "Brand recognition can affect resale ease, but any bar from a reputable refiner should be sellable. Some buyers prefer specific brands for their security features or packaging, while others focus primarily on gold content and price.",
+          "Brand recognition can affect resale ease, but any bar from a reputable refiner should be sellable. Some buyers prefer specific brands for their security features or packaging, while others focus primarily on gold content and price. For more background on 1 oz gold bullion bars, see [this educational overview](https://www.monex.com/knowledge-base/gold-investing/gold-bullion/1oz-gold-bullion-bars/).",
         ],
       },
     ],
@@ -50,6 +60,13 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "1-oz-gold-bar-vs-gold-coin": {
     updatedAt: "2024-12-14",
+    quickSummary: "Gold bars typically carry lower premiums (3-6%) compared to gold coins (5-10%+), making them more cost-efficient for accumulation. Coins offer legal tender status and wider recognition, while bars appeal to buyers focused on gold content at the lowest cost.",
+    keyTakeaways: [
+      "Bars have lower premiums because they cost less to produce",
+      "Coins carry legal tender status but trade based on gold content",
+      "Popular coins like Gold Eagles are recognized globally",
+      "Many investors hold both bars and coins for different purposes"
+    ],
     sections: [
       {
         heading: "Premium Differences",
@@ -76,7 +93,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
         heading: "Which Is Right for You",
         paragraphs: [
           "If minimizing premium is your priority, bars usually offer better value per ounce of gold. If you value recognition, collectibility, or legal tender status, coins may be preferable despite the higher premium.",
-          "Many investors hold both. Bars provide efficient accumulation when adding larger amounts, while coins offer flexibility and broader appeal when selling smaller quantities.",
+          "Many investors hold both. Bars provide efficient accumulation when adding larger amounts, while coins offer flexibility and broader appeal when selling smaller quantities. You can review current [1 oz gold bar offerings](https://www.monex.com/1-oz-gold-bullion-bars-for-sale/) to compare options.",
         ],
       },
     ],
@@ -84,12 +101,20 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "how-much-is-a-1-oz-gold-bar-worth": {
     updatedAt: "2024-12-14",
+    quickSummary: "The value of a 1 oz gold bar equals the current spot price plus a dealer premium, typically 3-8% over spot. When selling, expect to receive spot minus a 1-3% dealer spread. Gold prices fluctuate continuously during market hours.",
+    keyTakeaways: [
+      "Price = spot price + premium (typically 3-8% for 1 oz bars)",
+      "Spot prices fluctuate based on global supply and demand",
+      "Selling price = spot minus dealer spread (usually 1-3%)",
+      "Factor in shipping and taxes when calculating total cost",
+      "Always get a live quote rather than relying on stale prices"
+    ],
     sections: [
       {
         heading: "Spot Price Foundation",
         paragraphs: [
           "The value of a 1 oz gold bar starts with the spot price of gold. The spot price represents the current market price for immediate delivery of gold, quoted per troy ounce. This price fluctuates throughout trading hours based on global supply and demand.",
-          "Spot prices are determined by trading on major exchanges and over-the-counter markets worldwide. You can find current spot prices on financial news sites, precious metals dealers, and market data providers.",
+          "Spot prices are determined by trading on major exchanges and over-the-counter markets worldwide. You can find current spot prices on financial news sites, precious metals dealers, and [gold price data providers](https://www.monex.com/gold-prices/).",
         ],
       },
       {
@@ -118,11 +143,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "are-1-oz-gold-bars-a-good-investment": {
     updatedAt: "2024-12-14",
+    quickSummary: "Gold has historically served as a store of value and portfolio diversifier. However, physical gold involves premiums, storage costs, and produces no income. Whether 1 oz bars fit your situation depends on your goals and risk tolerance.",
+    keyTakeaways: [
+      "Gold has maintained purchasing power across generations",
+      "Gold often moves independently of stocks and bonds",
+      "Physical gold involves premiums, spreads, and storage costs",
+      "Gold produces no dividends or interest",
+      "Consider consulting a financial advisor for personalized guidance"
+    ],
     sections: [
       {
         heading: "Historical Role of Gold",
         paragraphs: [
-          "Gold has served as a store of value for thousands of years. It has maintained purchasing power across generations while currencies have come and gone. This track record is one reason investors consider gold for long-term holdings.",
+          "Gold has served as a store of value for thousands of years. It has maintained purchasing power across generations while currencies have come and gone. This track record is one reason investors consider gold for long-term holdings. For broader context, see [this guide to investing in gold](https://www.monex.com/investing-in-gold/).",
           "However, past performance does not guarantee future results. Gold does not produce income like stocks or bonds. Its value depends entirely on what others are willing to pay for it.",
         ],
       },
@@ -152,12 +185,20 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "how-to-buy-1-oz-gold-bars-safely": {
     updatedAt: "2024-12-14",
+    quickSummary: "Buy safely by choosing reputable dealers with verifiable track records, comparing prices across multiple sources, and verifying authenticity upon delivery. Keep all documentation for insurance and tax purposes.",
+    keyTakeaways: [
+      "Select established dealers with physical addresses and clear contact info",
+      "Compare prices but be wary of deals that seem too good to be true",
+      "Verify weight (31.1035g) and serial numbers upon delivery",
+      "Keep all invoices, assay cards, and certificates",
+      "Avoid unsolicited offers and pressure tactics"
+    ],
     sections: [
       {
         heading: "Choosing a Reputable Dealer",
         paragraphs: [
           "The most important step in buying gold safely is selecting a reputable dealer. Look for established businesses with verifiable track records, physical addresses, and clear contact information. Online reviews and industry accreditations can provide additional confidence.",
-          "Major online dealers include JM Bullion, APMEX, SD Bullion, and others. Local coin shops can also be good sources. Compare prices across several dealers, but be wary of prices that seem too good to be true.",
+          "Major online dealers include JM Bullion, APMEX, SD Bullion, and others with [1 oz gold bar inventories](https://www.monex.com/1-oz-gold-bullion-bars-for-sale/). Local coin shops can also be good sources. Compare prices across several dealers, but be wary of prices that seem too good to be true.",
         ],
       },
       {
@@ -193,11 +234,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "1-oz-vs-10-oz-gold-bar": {
     updatedAt: "2024-12-14",
+    quickSummary: "10 oz bars offer lower premiums (2-4%) versus 1 oz bars (3-6%+), but require significantly more capital upfront. The 1 oz format provides greater flexibility for gradual accumulation and partial liquidation.",
+    keyTakeaways: [
+      "10 oz bars have lower per-ounce premiums than 1 oz bars",
+      "1 oz bars require less capital and allow gradual accumulation",
+      "Smaller bars offer more flexibility when selling",
+      "The buyer pool for 1 oz bars is larger and more accessible",
+      "Many investors use a mix of sizes for different purposes"
+    ],
     sections: [
       {
         heading: "Premium Comparison",
         paragraphs: [
-          "Larger bars typically carry lower premiums per ounce. A 10 oz bar might have a premium of 2-4% over spot, while 1 oz bars often run 3-6% or more. Over a significant purchase, this difference can be meaningful.",
+          "Larger bars typically carry lower premiums per ounce. A 10 oz bar might have a premium of 2-4% over spot, while 1 oz bars often run 3-6% or more. Over a significant purchase, this difference can be meaningful. You can track historical pricing trends through [1 oz gold bar price charts](https://www.monex.com/1-oz-gold-bullion-bar-price-charts/).",
           "The premium savings come from production efficiency. It costs nearly as much to refine, assay, and package a 1 oz bar as a 10 oz bar. Spreading those costs over more ounces reduces the per-ounce premium.",
         ],
       },
@@ -234,12 +283,20 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "1-oz-gold-bar-vs-gold-round": {
     updatedAt: "2024-12-14",
+    quickSummary: "Gold rounds are circular bullion pieces that resemble coins but lack legal tender status. Premiums on rounds and 1 oz bars are generally similar, and both are readily traded through bullion dealers.",
+    keyTakeaways: [
+      "Rounds look like coins but are privately minted without legal tender status",
+      "Premiums on rounds and bars are generally comparable",
+      "Both formats trade based on gold content plus a modest premium",
+      "Neither has a clear liquidity advantage over the other",
+      "Choose based on aesthetics, availability, and current pricing"
+    ],
     sections: [
       {
         heading: "What Are Gold Rounds",
         paragraphs: [
           "Gold rounds are circular pieces of gold that resemble coins but lack legal tender status. They are produced by private mints rather than government mints. Rounds contain a specified weight of gold (commonly 1 oz) at a stated purity.",
-          "Like bars, rounds trade based on their gold content plus a premium. They offer an alternative format for holding physical gold without the higher premiums often associated with government-minted coins.",
+          "Like bars, rounds trade based on their gold content plus a premium. They offer an alternative format for holding physical gold without the higher premiums often associated with government-minted coins. For background on how bars are produced, see [the making of 1 oz gold bars](https://www.monex.com/knowledge/the-making-of-1-oz-gold-bars/).",
         ],
       },
       {
@@ -268,6 +325,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "best-1-oz-gold-bars-to-buy": {
     updatedAt: "2024-12-14",
+    quickSummary: "Bars from LBMA-accredited refiners like PAMP Suisse, Valcambi, and Perth Mint are widely accepted and offer consistent quality. Brand choice affects premium and security features, but any LBMA bar contains the same gold.",
+    keyTakeaways: [
+      "LBMA-accredited bars are accepted by dealers worldwide",
+      "Major refiners include PAMP, Valcambi, Perth Mint, and Royal Canadian Mint",
+      "Different refiners offer different security features",
+      "Brand-name bars may sell slightly faster but cost more",
+      "The most important protection is buying from reputable dealers"
+    ],
     sections: [
       {
         heading: "LBMA Accreditation",
@@ -294,7 +359,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
         heading: "Price vs. Brand",
         paragraphs: [
           "Premium brands sometimes cost more than generic or less recognized bars. Whether the extra premium is worthwhile depends on your priorities. Brand-name bars may sell slightly faster, but generic bars from reputable dealers still contain the same gold.",
-          "If cost efficiency is your primary goal, consider whichever LBMA-accredited bar offers the lowest premium. If you value specific security features or plan to display your gold, brand may matter more.",
+          "If cost efficiency is your primary goal, consider whichever LBMA-accredited bar offers the lowest premium. If you value specific security features or plan to display your gold, brand may matter more. Browse [available 1 oz gold bars](https://www.monex.com/1-oz-gold-bullion-bars-for-sale/) to compare brands and pricing.",
         ],
       },
     ],
@@ -302,11 +367,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "are-1-oz-gold-bars-easy-to-sell": {
     updatedAt: "2024-12-14",
+    quickSummary: "The 1 oz format is among the most liquid in the retail gold market due to its accessible price point and large buyer pool. Most dealers actively buy back recognized bars at spot minus a 1-3% spread.",
+    keyTakeaways: [
+      "1 oz bars attract more individual buyers than larger sizes",
+      "Most bullion dealers offer buy-back programs",
+      "Expect to receive spot price minus a 1-3% dealer spread",
+      "Bars in original packaging typically command better prices",
+      "Get quotes from multiple dealers before selling"
+    ],
     sections: [
       {
         heading: "Liquidity of the 1 oz Format",
         paragraphs: [
-          "The 1 oz size is among the most liquid formats in the retail gold market. Its accessible price point means a large pool of potential buyers exists. Most dealers actively buy 1 oz bars from recognized refiners.",
+          "The 1 oz size is among the most liquid formats in the retail gold market. Its accessible price point means a large pool of potential buyers exists. Most dealers actively buy 1 oz bars from recognized refiners, and you can see typical [1 oz bar market offerings](https://www.monex.com/1-oz-gold-bullion-bars-for-sale/) to understand the range available.",
           "Compared to larger bars like 10 oz or kilo sizes, 1 oz bars attract more individual buyers. This broader market can make selling faster and easier.",
         ],
       },
@@ -336,6 +409,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "how-to-store-1-oz-gold-bars": {
     updatedAt: "2024-12-14",
+    quickSummary: "Storage options include home safes, bank safe deposit boxes, and professional vault services. Each involves trade-offs between cost, access, and security. Insurance coverage is important regardless of your storage method.",
+    keyTakeaways: [
+      "Home safes offer immediate access but require your own insurance",
+      "Bank safe deposit boxes are secure but contents are not FDIC insured",
+      "Professional vaults typically include insurance (0.5-1% annually)",
+      "Document holdings with photos and serial numbers for insurance",
+      "Consider splitting storage between home and professional options"
+    ],
     sections: [
       {
         heading: "Home Storage Options",
@@ -368,7 +449,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "Balancing Security and Access",
         paragraphs: [
-          "More secure storage often means less convenient access. Consider how frequently you might need to access your gold and what level of security gives you peace of mind.",
+          "More secure storage often means less convenient access. Consider how frequently you might need to access your gold and what level of security gives you peace of mind. For additional perspectives on ownership considerations, see [owning 1 oz gold bars](https://www.monex.com/knowledge/owning-1-oz-gold-bars/).",
           "Some investors split their holdings: a portion at home for immediate access and the bulk in professional storage for maximum security.",
         ],
       },
@@ -377,6 +458,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "how-to-tell-if-a-1-oz-gold-bar-is-real": {
     updatedAt: "2024-12-14",
+    quickSummary: "Verify authenticity through weight (31.1035g), dimensions, and visual inspection of stamps and packaging. Professional testing via XRF or specific gravity provides certainty. The best protection is buying from reputable dealers.",
+    keyTakeaways: [
+      "A genuine 1 oz bar weighs exactly 31.1035 grams",
+      "Check for sharp stamping, consistent color, and proper markings",
+      "Serial numbers should match assay card documentation",
+      "XRF and specific gravity testing offer professional verification",
+      "Buying from reputable dealers is the best counterfeit prevention"
+    ],
     sections: [
       {
         heading: "Visual Inspection",
@@ -403,7 +492,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
         heading: "Professional Testing",
         paragraphs: [
           "For certainty, professional testing is available. XRF (X-ray fluorescence) analyzers can verify gold content non-destructively. Specific gravity testing compares density against known values. Reputable dealers and some coin shops offer these services.",
-          "If you are concerned about a bar's authenticity, professional testing is worth the modest cost. It provides documentation that can also support future resale.",
+          "If you are concerned about a bar's authenticity, professional testing is worth the modest cost. It provides documentation that can also support future resale. Understanding [how gold bars are made](https://www.monex.com/knowledge/the-making-of-1-oz-gold-bars/) can also help you recognize genuine products.",
         ],
       },
       {
@@ -418,11 +507,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "do-1-oz-gold-bars-have-serial-numbers": {
     updatedAt: "2024-12-14",
+    quickSummary: "Many major refiners like PAMP and Valcambi serialize their 1 oz bars, while some generic bars omit serial numbers. Serial numbers aid verification and documentation but are not required for all legitimate bars.",
+    keyTakeaways: [
+      "Major refiners routinely serialize bars and include assay cards",
+      "Not all legitimate gold bars have serial numbers",
+      "Serial numbers help verify authenticity when matched with documentation",
+      "Record serial numbers for insurance and resale purposes",
+      "Bars without serials may require additional verification when selling"
+    ],
     sections: [
       {
         heading: "Serial Number Practices",
         paragraphs: [
-          "Many 1 oz gold bars from major refiners include unique serial numbers stamped directly on the bar. PAMP Suisse, Valcambi, Perth Mint, and others routinely serialize their bars. These numbers are also printed on the accompanying assay card.",
+          "Many 1 oz gold bars from major refiners include unique serial numbers stamped directly on the bar. PAMP Suisse, Valcambi, Perth Mint, and others routinely serialize their bars. These numbers are also printed on the accompanying assay card. Learn more about [the production process for 1 oz gold bars](https://www.monex.com/knowledge/the-making-of-1-oz-gold-bars/).",
           "Not all gold bars have serial numbers. Some smaller refiners or older bars may lack them. Generic bars produced for pure bullion purposes sometimes omit serial numbers to reduce production costs.",
         ],
       },
@@ -452,6 +549,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "1-oz-gold-bar-premium-explained": {
     updatedAt: "2024-12-14",
+    quickSummary: "The premium is the amount paid above spot price, typically 3-8% for 1 oz bars. Premiums cover refining, fabrication, and dealer margin. When selling, you receive spot minus a spread, so gold must rise enough to overcome round-trip costs.",
+    keyTakeaways: [
+      "Premium = purchase price minus spot price (typically 3-8% for 1 oz)",
+      "Premiums cover refining, fabrication, distribution, and dealer costs",
+      "Brand-name bars often carry slightly higher premiums than generic",
+      "Premiums spike during high demand and compress when demand is soft",
+      "You do not recover your purchase premium when selling"
+    ],
     sections: [
       {
         heading: "What Is a Premium",
@@ -463,7 +568,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "Typical Premium Ranges",
         paragraphs: [
-          "Premiums on 1 oz gold bars typically range from 3-8% over spot, though they can go higher during periods of strong demand. Brand-name bars from PAMP or Valcambi often carry slightly higher premiums than generic bars.",
+          "Premiums on 1 oz gold bars typically range from 3-8% over spot, though they can go higher during periods of strong demand. Brand-name bars from PAMP or Valcambi often carry slightly higher premiums than generic bars. For a deeper look at pricing factors, see [understanding 1 oz gold bar prices](https://www.monex.com/knowledge/understanding-1-oz-gold-bar-prices/).",
           "Compare premiums across dealers to find competitive pricing. Online dealers often post their premiums clearly, making comparison straightforward. Remember that the lowest premium is not always the best value if it comes from a questionable source.",
         ],
       },
@@ -493,11 +598,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "1-oz-gold-bars-vs-gold-etfs": {
     updatedAt: "2024-12-14",
+    quickSummary: "Physical bars provide direct ownership with no counterparty risk, while ETFs offer convenient trading through brokerage accounts. ETFs charge ongoing expense ratios (0.25-0.40%/year); physical gold has premiums but no percentage fees.",
+    keyTakeaways: [
+      "Physical bars mean direct ownership with no counterparty",
+      "ETF shares represent indirect ownership through a trust",
+      "ETFs have expense ratios that compound over time",
+      "Physical gold has premiums at purchase but no ongoing fees",
+      "Many investors use both for different purposes"
+    ],
     sections: [
       {
         heading: "What Are Gold ETFs",
         paragraphs: [
-          "Gold ETFs (Exchange-Traded Funds) are financial products that track the price of gold. They trade on stock exchanges like regular shares. Some ETFs hold physical gold in vaults, while others use derivatives to replicate gold price movements.",
+          "Gold ETFs (Exchange-Traded Funds) are financial products that track the price of gold. They trade on stock exchanges like regular shares. Some ETFs hold physical gold in vaults, while others use derivatives to replicate gold price movements. For broader context on physical gold ownership, see [investing in gold](https://www.monex.com/investing-in-gold/).",
           "Popular gold ETFs include SPDR Gold Shares (GLD) and iShares Gold Trust (IAU). These funds hold allocated gold bars in secure vaults, with each share representing a fraction of an ounce.",
         ],
       },
@@ -534,6 +647,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "are-1-oz-gold-bars-taxable": {
     updatedAt: "2024-12-14",
+    quickSummary: "Tax treatment of gold varies by jurisdiction and transaction type. In the US, gold is classified as a collectible for tax purposes. Sales tax rules also vary by state. Consult a tax professional for guidance specific to your situation.",
+    keyTakeaways: [
+      "Tax rules vary significantly by location and circumstances",
+      "In the US, gold is classified as a collectible by the IRS",
+      "Some states exempt investment gold from sales tax; others do not",
+      "Keep accurate records of purchase and sale prices",
+      "Consult a tax professional for personalized guidance"
+    ],
     sections: [
       {
         heading: "Important Disclaimer",
@@ -566,7 +687,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "Seek Professional Guidance",
         paragraphs: [
-          "Given the complexity of precious metals taxation, consulting a tax professional before buying or selling is advisable. They can help you understand your specific obligations and potentially identify strategies to minimize tax impact.",
+          "Given the complexity of precious metals taxation, consulting a tax professional before buying or selling is advisable. They can help you understand your specific obligations and potentially identify strategies to minimize tax impact. For additional background, see [owning 1 oz gold bars](https://www.monex.com/knowledge/owning-1-oz-gold-bars/).",
           "An accountant familiar with precious metals can also help with record-keeping requirements and ensure proper reporting when you file.",
         ],
       },
@@ -575,11 +696,19 @@ export const resourcesContent: Record<string, ArticleContent> = {
 
   "why-investors-choose-1-oz-gold-bars": {
     updatedAt: "2024-12-14",
+    quickSummary: "The 1 oz format balances accessibility with reasonable premiums, offering a practical entry point for individual investors. Strong liquidity, compact storage, and flexibility for partial liquidation make it a popular choice.",
+    keyTakeaways: [
+      "Accessible capital requirement compared to larger bar sizes",
+      "Lower premiums than fractional products, more flexibility than larger bars",
+      "Among the most actively traded sizes in the retail market",
+      "Compact dimensions (50mm x 28mm) suit home safes and deposit boxes",
+      "Broad appeal supports both buying and selling liquidity"
+    ],
     sections: [
       {
         heading: "Accessible Entry Point",
         paragraphs: [
-          "The 1 oz gold bar offers an accessible entry point for gold ownership. Unlike 10 oz or kilo bars that require significant capital, a single 1 oz bar represents a manageable investment for most individual buyers.",
+          "The 1 oz gold bar offers an accessible entry point for gold ownership. Unlike 10 oz or kilo bars that require significant capital, a single 1 oz bar represents a manageable investment for most individual buyers. For historical context on this format, see [the 1 oz gold bar legacy](https://www.monex.com/knowledge/1-oz-gold-bar-legacy/).",
           "This accessibility allows investors to start with a single bar and gradually accumulate over time. Dollar-cost averaging into gold becomes practical at this size.",
         ],
       },

@@ -6,6 +6,7 @@ import { resources1oz, getResource1ozBySlug, getResources1ozByCategory, Resource
 import { getArticleContent } from "@/data/resources-1oz-content";
 import { getResourceFAQs } from "@/data/resources-1oz-faq";
 import { buildResourceSchemas } from "@/lib/schema";
+import { parseInlineLinks } from "@/lib/parseLinks";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -172,6 +173,47 @@ export default async function ResourceArticlePage({ params }: Props) {
             </p>
           </header>
 
+          {/* Quick Summary */}
+          {content?.quickSummary && (
+            <section className="mb-8">
+              <h2 className="text-xl font-display font-semibold text-white mb-3">
+                Quick Summary
+              </h2>
+              <p className="text-gray-300 leading-relaxed bg-bullion-gold/5 border border-bullion-gold/10 rounded-lg p-4">
+                {content.quickSummary}
+              </p>
+            </section>
+          )}
+
+          {/* Key Takeaways */}
+          {content?.keyTakeaways && content.keyTakeaways.length > 0 && (
+            <section className="mb-10">
+              <h2 className="text-xl font-display font-semibold text-white mb-3">
+                Key Takeaways
+              </h2>
+              <ul className="space-y-2">
+                {content.keyTakeaways.map((takeaway, index) => (
+                  <li key={index} className="flex items-start gap-3 text-gray-300">
+                    <svg
+                      className="w-5 h-5 text-bullion-gold flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>{takeaway}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* Article Content */}
           {content && content.sections.length > 0 ? (
             <article className="space-y-10 mb-12">
@@ -186,7 +228,7 @@ export default async function ResourceArticlePage({ params }: Props) {
                         key={pIndex}
                         className="text-gray-300 leading-relaxed"
                       >
-                        {paragraph}
+                        {parseInlineLinks(paragraph)}
                       </p>
                     ))}
                   </div>

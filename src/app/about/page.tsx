@@ -3,16 +3,16 @@ import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About | 1ozGoldBars.com",
+  title: "About | 1KiloGoldBars.com",
   description:
-    "Learn about 1ozGoldBars.com, an independent educational resource about 1 oz gold bars. We do not sell precious metals or provide financial advice.",
+    "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars. We do not sell precious metals or provide financial advice.",
   alternates: {
     canonical: `${SITE_CONFIG.canonicalDomain}/about`,
   },
   openGraph: {
-    title: "About | 1ozGoldBars.com",
+    title: "About | 1KiloGoldBars.com",
     description:
-      "Learn about 1ozGoldBars.com, an independent educational resource about 1 oz gold bars.",
+      "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars.",
     url: `${SITE_CONFIG.domain}/about`,
   },
 };
@@ -21,9 +21,9 @@ export default function AboutPage() {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About 1ozGoldBars.com",
+    name: "About 1KiloGoldBars.com",
     description:
-      "Learn about 1ozGoldBars.com, an independent educational resource about 1 oz gold bars.",
+      "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars.",
     url: `${SITE_CONFIG.domain}/about`,
     publisher: {
       "@type": "Organization",
@@ -47,7 +47,7 @@ export default function AboutPage() {
               About <span className="gold-text">{SITE_CONFIG.brandName}</span>
             </h1>
             <p className="text-xl text-gray-300">
-              An independent educational resource for gold investors
+              An independent educational resource for serious gold investors
             </p>
           </div>
 
@@ -60,15 +60,16 @@ export default function AboutPage() {
               </h2>
               <p className="text-gray-300 leading-relaxed mb-4">
                 {SITE_CONFIG.brandName} is an independent educational website
-                dedicated to helping investors understand{" "}
-                {SITE_CONFIG.primaryProduct}, one of the most popular formats
-                for individual gold ownership.
+                dedicated to helping serious investors understand{" "}
+                {SITE_CONFIG.primaryProduct}, the preferred choice for those 
+                seeking substantial gold positions with the lowest premiums 
+                per ounce.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 Our mission is to provide clear, unbiased information about 
-                1 oz gold bar investing, including pricing mechanics, storage 
-                options, refiner comparisons, and the trade-offs between 
-                different bar sizes.
+                kilo bar investing, including pricing mechanics, storage 
+                requirements, refiner comparisons, and the trade-offs between 
+                bar sizes.
               </p>
             </section>
 
@@ -129,8 +130,8 @@ export default function AboutPage() {
                 <li className="flex items-start gap-3">
                   <span className="text-bullion-gold">•</span>
                   <span>
-                    <strong className="text-white">1 oz Gold Bar price</strong> (current
-                    ask price for a 1 oz gold bar)
+                    <strong className="text-white">1 Kilo Gold Bar price</strong> (current
+                    ask price for a 1 kg gold bar)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -224,6 +225,9 @@ export default function AboutPage() {
               </Link>
               <Link href="/live-gold-prices" className="btn-secondary">
                 View Gold Prices
+              </Link>
+              <Link href="/resources" className="btn-secondary">
+                Browse Resources
               </Link>
             </div>
           </div>
