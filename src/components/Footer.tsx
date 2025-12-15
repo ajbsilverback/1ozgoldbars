@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center">
-                <span className="text-black font-bold text-sm">1kg</span>
+                <span className="text-black font-bold text-sm">1oz</span>
               </div>
               <span className="text-xl font-display font-semibold gold-text">
                 {SITE_CONFIG.brandName}
@@ -20,8 +20,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted educational resource for {SITE_CONFIG.primaryProduct}. 
-              Helping serious investors understand 32.15 troy ounce gold bars 
-              with the lowest premiums per ounce.
+              Helping individual investors understand gold bar investing.
             </p>
           </div>
 
@@ -47,10 +46,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/resources"
+                  href="/where-to-buy"
                   className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
                 >
-                  Resources
+                  Where to Buy
                 </Link>
               </li>
               <li>
@@ -64,40 +63,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Learn More */}
           <div>
             <h3 className="text-bullion-gold font-semibold mb-4">Learn More</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/where-to-buy-1-kilo-gold-bars"
+                  href="/live-gold-prices"
                   className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
                 >
-                  Where to Buy 1 Kilo Gold Bars
+                  Live Gold Prices
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/resources/premiums-explained"
+                  href="/where-to-buy"
                   className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
                 >
-                  Understanding Premiums
+                  Buying Guide
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/resources/size-comparison"
+                  href="/about"
                   className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
                 >
-                  Size Comparison Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/storage-options"
-                  className="text-gray-400 hover:text-bullion-gold transition-colors text-sm"
-                >
-                  Storage Options
+                  About Us
                 </Link>
               </li>
             </ul>

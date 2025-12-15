@@ -1,9 +1,0 @@
-# https://www.1ozgoldbars.com robots.txt
-
-User-agent: *
-Allow: /
-
-Sitemap: https://www.1ozgoldbars.com/sitemap.xml
-
-
-

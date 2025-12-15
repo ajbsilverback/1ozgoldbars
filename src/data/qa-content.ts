@@ -4,249 +4,248 @@ import { QAItem } from "@/components/QASection";
  * FAQ Content with Dynamic Price Tokens
  * 
  * Supported tokens (replaced at render time with live prices):
- * - {{CAPITAL_REQUIREMENT}}       -> "~$132,500" (ask price rounded to $100)
- * - {{CAPITAL_REQUIREMENT_RANGE}} -> "~$126,000–$139,000" (ask ± 5% band)
- * - {{CAPITAL_REQUIREMENT_PLUS}}  -> "~$132,500+" (ask rounded with plus)
- * - {{LIQUIDITY_THRESHOLD}}       -> "~$132,500+" (same as plus, for liquidity context)
+ * - {{OZ1_PRICE}}        -> "~$2,100" (1 oz bar ask price rounded)
+ * - {{OZ1_PRICE_RANGE}}  -> "~$2,000-$2,200" (1 oz bar price range)
+ * - {{SPOT_PRICE}}       -> "~$2,000" (spot price per ounce)
  */
 
 export const homeQA: QAItem[] = [
   {
-    question: "What is the actual weight of a 1 kilo gold bar?",
-    answer: "A 1 kilo gold bar weighs exactly 1,000 grams or 32.1507 troy ounces. This makes it one of the largest bar sizes commonly available to retail investors, containing over 32 times the gold of a standard 1 oz bar.",
+    question: "What is the actual weight of a 1 oz gold bar?",
+    answer: "A 1 oz gold bar contains exactly one troy ounce of gold, which equals 31.1035 grams. This is the standard weight for retail gold bars and is the most common size purchased by individual investors.",
   },
   {
-    question: "Why do 1 kilo gold bars have lower premiums than smaller bars?",
-    answer: "Kilo bars have the lowest retail premiums (typically 1.5-3% over spot) because manufacturing costs are spread across more gold content. Producing one kilo bar is more efficient than producing 32 individual 1 oz bars. The per-ounce production, handling, and distribution costs decrease significantly with larger bar sizes.",
+    question: "Why do 1 oz gold bars have higher premiums than larger bars?",
+    answer: "The 1 oz size has higher per-ounce premiums (typically 3-8% over spot) because manufacturing, packaging, and handling costs are spread across less gold content. Each bar requires individual minting, assaying, and packaging regardless of size. The trade-off is better liquidity and flexibility.",
   },
   {
-    question: "How much capital do I need to buy a 1 kilo gold bar?",
-    answer: "At current gold prices, a single 1 kilo gold bar costs approximately {{CAPITAL_REQUIREMENT_RANGE}} depending on spot price and dealer premiums. This substantial capital requirement makes kilo bars most suitable for high-net-worth individuals, family offices, and serious investors building significant gold positions.",
+    question: "How much does a 1 oz gold bar cost?",
+    answer: "A 1 oz gold bar costs the current gold spot price plus a dealer premium, typically ranging from 3-8% depending on the refiner and market conditions. The exact price changes continuously with the gold market. Check our live pricing widget for current values.",
   },
   {
-    question: "Are 1 kilo gold bars harder to sell than smaller bars?",
-    answer: "Kilo bars are less liquid than 1 oz or 10 oz bars because the buyer pool is smaller, as fewer individuals have {{LIQUIDITY_THRESHOLD}} to deploy at once. However, established dealers maintain ready markets for kilo bars from recognized refiners, and LBMA-accredited bars are accepted worldwide. Sales may take slightly longer but remain practical.",
+    question: "Are 1 oz gold bars easy to sell?",
+    answer: "Yes, 1 oz gold bars are among the most liquid gold products available. The size has broad appeal to both individual buyers and dealers, creating a large market. Most established dealers readily purchase 1 oz bars from recognized refiners. The wide buyer pool generally makes selling straightforward.",
   },
   {
-    question: "How do I store a 1 kilo gold bar safely?",
-    answer: "Given the substantial value ({{CAPITAL_REQUIREMENT_PLUS}}), most kilo bar owners use professional vault storage with allocated segregation. Options include bank safe deposit boxes, private vault facilities, or dealer storage programs. Home storage requires significant security investment. Professional storage often makes economic sense for holdings of this magnitude.",
+    question: "How do I store 1 oz gold bars safely?",
+    answer: "The compact size of 1 oz bars makes storage flexible. Common options include a home safe, bank safe deposit box, or professional vault storage. Consider insurance for your holdings regardless of storage method. Keep bars in their original packaging to preserve condition and documentation for future resale.",
   },
 ];
 
 export const pricesQA: QAItem[] = [
   {
-    question: "What is the relationship between spot price and 1 kilo gold bar prices?",
-    answer: "The kilo bar price equals the spot price multiplied by 32.1507 troy ounces, plus a premium (typically 1.5-3%). The total cost is approximately {{CAPITAL_REQUIREMENT}} including premium. This represents the lowest percentage premium of any common bar size.",
+    question: "What is the relationship between spot price and 1 oz gold bar prices?",
+    answer: "The 1 oz bar price equals the current spot price plus a dealer premium, typically 3-8%. For example, if spot is $2,000 and the premium is 5%, you would pay approximately $2,100 per bar. This premium covers refining, minting, packaging, shipping, and dealer margins.",
   },
   {
-    question: "Why do kilo bar premiums vary between dealers?",
-    answer: "Premium variations reflect different dealer business models, inventory positions, and overhead costs. Volume dealers with efficient operations often offer lower premiums. Brand differences also matter, as PAMP Suisse or Valcambi bars may carry slightly higher premiums than lesser-known refiners. Shopping multiple dealers helps identify competitive pricing.",
+    question: "Why do premiums vary between dealers?",
+    answer: "Premium variations reflect different dealer business models, inventory positions, and overhead costs. Volume dealers with efficient operations often offer lower premiums. Brand differences also matter, as bars from well-known refiners like PAMP or Valcambi may carry slightly higher premiums than generic bars. Shopping multiple dealers helps identify competitive pricing.",
   },
   {
-    question: "How does the bid-ask spread affect my kilo bar investment?",
-    answer: "The bid-ask spread on kilo bars is typically 1-2% for major refiner products, tighter than smaller bars. With a {{CAPITAL_REQUIREMENT}} bar, a 1.5% spread represents a meaningful amount. Understanding spreads is important because your gold must appreciate by the full spread percentage before you break even on a round-trip transaction.",
+    question: "How does the bid-ask spread affect my gold bar investment?",
+    answer: "The bid-ask spread represents the difference between what dealers pay (bid) and charge (ask). For 1 oz bars from recognized refiners, spreads are typically 3-5%. Understanding spreads is important because your gold must appreciate by the full spread percentage before you break even on a round-trip transaction.",
   },
   {
-    question: "Do kilo bars have lower premiums than 10 oz bars?",
-    answer: "Yes, kilo bars consistently offer lower per-ounce premiums than 10 oz bars (which run 2-4% over spot). The premium savings are meaningful at scale. Purchasing a kilo bar instead of equivalent 1 oz bars can save $1,500-$2,500 on a single purchase. Over time, these savings compound significantly.",
+    question: "Do larger bars have lower premiums than 1 oz bars?",
+    answer: "Yes, larger bars consistently offer lower per-ounce premiums. While 1 oz bars run 3-8% over spot, 10 oz bars typically have 2-4% premiums, and kilo bars run 1.5-3%. However, 1 oz bars offer superior liquidity and flexibility, which many investors value more than the premium savings of larger sizes.",
   },
   {
-    question: "When is the best time to buy 1 kilo gold bars based on pricing?",
-    answer: "The best time is during calm market conditions when premiums are at normal levels (1.5-3% over spot). Avoid buying during crisis-driven demand spikes when premiums can temporarily expand to 5%+ even on kilo bars. For large purchases, some investors negotiate directly with dealers for volume pricing.",
+    question: "When is the best time to buy 1 oz gold bars based on pricing?",
+    answer: "The best time is during calm market conditions when premiums are at normal levels (3-5% over spot for major brands). Avoid buying during crisis-driven demand spikes when premiums can temporarily expand to 10%+ even on common bars. For regular purchases, many investors use dollar-cost averaging rather than trying to time the market.",
   },
 ];
 
 export const resourcesQA: QAItem[] = [
   {
-    question: "What topics do your 1 kilo gold bar resources cover?",
-    answer: "Our educational library covers all aspects of kilo bar investing including: understanding premiums, size comparisons (1 oz vs 10 oz vs kilo), storage requirements for high-value bars, brand comparisons (PAMP, Valcambi, Perth, Argor-Heraeus), gold market dynamics, bid-ask spreads, authentication, and portfolio allocation strategies.",
+    question: "What topics do your 1 oz gold bar resources cover?",
+    answer: "Our educational library covers all aspects of 1 oz bar investing including: understanding premiums and pricing, comparisons with other formats (coins, larger bars, ETFs), storage options, brand comparisons among major refiners, gold market dynamics, bid-ask spreads, authentication basics, and practical buying guidance.",
   },
   {
-    question: "Are 1 kilo gold bars better than smaller bars?",
-    answer: "Neither is universally better; each serves different investor needs. Kilo bars excel in premium efficiency and are ideal for building large positions at minimum cost. Smaller bars offer flexibility for partial liquidation. Many sophisticated investors combine sizes, using kilo bars for core long-term holdings and smaller bars for flexibility.",
+    question: "Are 1 oz gold bars better than gold coins?",
+    answer: "Neither is universally better; each serves different purposes. Gold bars typically have lower premiums than coins and focus purely on gold content. Coins may have numismatic value and are often government-minted. Many investors prefer bars for straightforward bullion investment and coins for collectibility or legal tender status.",
   },
   {
-    question: "Which brands of 1 kilo gold bars are most recognized?",
-    answer: "Top-tier LBMA-accredited brands include PAMP Suisse, Valcambi, Argor-Heraeus, Perth Mint, and Heraeus. These refiners produce bars meeting .9999 fine gold purity standards with sophisticated security features. LBMA-accredited bars are accepted globally and typically command better resale values.",
+    question: "Which brands of 1 oz gold bars are most recognized?",
+    answer: "Top-tier LBMA-accredited brands include PAMP Suisse, Valcambi, Perth Mint, Royal Canadian Mint, and Argor-Heraeus. These refiners produce bars meeting .9999 fine gold purity standards with assay certificates and serial numbers. LBMA-accredited bars are accepted globally and typically command better resale values.",
   },
   {
-    question: "How do 1 kilo gold bars compare to gold ETFs?",
-    answer: "Kilo bars provide direct physical ownership with no counterparty risk, meaning you hold the actual metal. Gold ETFs offer convenience and easy trading but represent claims on gold held by third parties. For investors with substantial capital seeking tangible assets outside the financial system, kilo bars provide direct ownership that ETFs cannot match.",
+    question: "How do 1 oz gold bars compare to gold ETFs?",
+    answer: "Gold bars provide direct physical ownership with no counterparty risk, meaning you hold the actual metal. Gold ETFs offer convenience and easy trading but represent claims on gold held by third parties. Physical bars are outside the financial system; ETFs trade like stocks. The choice depends on your priorities regarding direct ownership versus trading convenience.",
   },
   {
-    question: "What should I look for when buying my first 1 kilo gold bar?",
-    answer: "For first-time kilo bar buyers: choose LBMA-accredited refiners (PAMP, Valcambi, Perth, Argor-Heraeus), verify the dealer's reputation thoroughly given the high value, compare premiums across multiple sources, ensure full documentation including assay certificate and serial number, and plan your storage solution before purchasing.",
+    question: "What should I look for when buying my first 1 oz gold bar?",
+    answer: "For first-time buyers: choose bars from LBMA-accredited refiners (PAMP, Valcambi, Perth Mint), verify the dealer's reputation, compare premiums across multiple sources, ensure the bar includes documentation (assay card, serial number if applicable), and plan your storage solution before purchasing.",
   },
 ];
 
-// Resource-specific Q&A content
+// Resource-specific Q&A content - updated for 1 oz focus
 export const resourceQA: Record<string, QAItem[]> = {
   "premiums-explained": [
     {
-      question: "What is a typical premium for a 1 kilo gold bar?",
-      answer: "Typical premiums for kilo gold bars from LBMA-accredited refiners range from 1.5-3% over spot under normal market conditions. This is significantly lower than 1 oz bars (3-8%) or 10 oz bars (2-4%). During supply constraints, premiums can temporarily rise to 4-5%, but kilo bars maintain the lowest premiums of any common size.",
+      question: "What is a typical premium for a 1 oz gold bar?",
+      answer: "Typical premiums for 1 oz gold bars from LBMA-accredited refiners range from 3-8% over spot under normal market conditions. Branded bars from PAMP or Valcambi may be at the higher end, while generic bars cost less. During supply constraints, premiums can temporarily rise further.",
     },
     {
-      question: "How much can I save by buying kilo bars instead of 1 oz bars?",
-      answer: "The savings are substantial. Purchasing gold as 32 individual 1 oz bars (5% average premium) costs significantly more than the same gold content as a kilo bar (2% premium), a savings of roughly $1,500-$2,500 per bar. For investors building significant positions, these savings compound with each purchase.",
+      question: "Why do 1 oz bars have higher premiums than larger bars?",
+      answer: "Manufacturing costs are fixed per bar regardless of size. Minting, assaying, and packaging a 1 oz bar costs nearly the same as a 10 oz bar, but these costs are spread across less gold content. The trade-off is that 1 oz bars offer better liquidity and lower capital requirements.",
     },
     {
-      question: "Do I recover the premium when I sell my kilo gold bar?",
-      answer: "You typically don't recover the full premium on resale, but kilo bars from recognized refiners have tighter bid-ask spreads (1-2%) than smaller bars. LBMA-accredited products from PAMP, Valcambi, or Perth Mint command better buyback prices. The combination of lower purchase premiums and tighter spreads makes kilo bars economically efficient.",
+      question: "Do I recover the premium when I sell my 1 oz gold bar?",
+      answer: "You typically do not recover the full premium on resale. Dealers buy back at spot price minus a small spread (1-3%). Bars from recognized refiners with intact packaging and documentation command better buyback prices. Understanding this spread is important for calculating your actual investment return.",
     },
   ],
   "size-comparison": [
     {
-      question: "How much money do I save buying a kilo bar instead of equivalent smaller bars?",
-      answer: "Premium savings are significant. If 1 oz bars carry 5% premiums and kilo bars carry 2%, you save approximately 3% on the gold value, about $1,500-$2,500 on a {{CAPITAL_REQUIREMENT}} purchase. Over multiple purchases building a substantial position, savings can reach tens of thousands of dollars compared to buying only 1 oz bars.",
+      question: "How does a 1 oz bar compare to larger sizes?",
+      answer: "A 1 oz bar offers maximum liquidity and flexibility at a higher premium cost. A 10 oz bar reduces premiums but requires more capital. Larger bars like kilos offer the lowest premiums but limited buyer pools. Most individual investors find 1 oz bars strike the best balance of accessibility and resale ease.",
     },
     {
-      question: "When should I choose kilo bars over smaller sizes?",
-      answer: "Choose kilo bars when you have substantial capital to deploy ({{LIQUIDITY_THRESHOLD}}), have a long investment horizon (5+ years), don't anticipate needing partial liquidation, want maximum premium efficiency, and have secure storage arranged. The premium savings justify the reduced flexibility for investors meeting these criteria.",
+      question: "When should I choose 1 oz bars over larger sizes?",
+      answer: "Choose 1 oz bars when you value liquidity and flexibility, want to start with a manageable investment, plan to dollar-cost average over time, or anticipate needing to sell portions of your holdings. The higher premium is the cost of these benefits.",
     },
     {
-      question: "Can I mix kilo bars with smaller bars in my portfolio?",
-      answer: "Yes, many sophisticated investors combine sizes strategically. A common approach: use kilo bars for core long-term holdings to maximize premium efficiency, then maintain smaller bars (10 oz or 1 oz) as a liquidity reserve for potential partial sales. This captures the benefits of both approaches.",
+      question: "Can I mix 1 oz bars with larger bars in my portfolio?",
+      answer: "Yes, many investors combine sizes strategically. A common approach: use larger bars for core long-term holdings to capture premium savings, then maintain 1 oz bars for flexibility and easier partial liquidation. This captures benefits of both approaches.",
     },
   ],
   "storage-options": [
     {
-      question: "What type of storage is recommended for 1 kilo gold bars?",
-      answer: "Given the {{CAPITAL_REQUIREMENT_PLUS}} value per bar, professional vault storage is strongly recommended. Look for allocated storage where your specific bars are segregated and identified. Major providers include Brink's, Loomis, and dealer-affiliated storage programs. Ensure the facility is fully insured and provides regular audits.",
+      question: "What type of storage is recommended for 1 oz gold bars?",
+      answer: "The compact size of 1 oz bars makes storage flexible. A quality home safe, bank safe deposit box, or professional vault all work well. Consider insurance regardless of method. Professional storage becomes more cost-effective as your holdings grow beyond a few bars.",
     },
     {
-      question: "Can I store kilo gold bars at home?",
-      answer: "Home storage is possible but requires significant security investment: a high-quality safe (UL TL-30 rated minimum), potentially bolted to concrete, with comprehensive homeowner's insurance riders. Given that a few bars represent several hundred thousand dollars, the cost-benefit analysis often favors professional storage.",
+      question: "Can I store 1 oz gold bars at home?",
+      answer: "Yes, home storage is practical for 1 oz bars given their compact size. A quality safe (fire-rated, bolted if possible) provides reasonable security. Check your homeowner's insurance for coverage limits on precious metals and consider a rider if needed. Keep your holdings confidential.",
     },
     {
-      question: "What are the typical costs for professional kilo bar storage?",
-      answer: "Professional vault storage typically costs 0.5-1% of value annually, though rates vary by provider and quantity stored. For a single kilo bar, expect $300-$800 per year. Many facilities offer lower per-bar rates for larger holdings. This cost is often offset by lower insurance expenses and eliminated home security investments.",
+      question: "What are typical costs for professional storage?",
+      answer: "Professional vault storage typically costs 0.5-1% of value annually, though minimums apply. For a small number of 1 oz bars, a bank safe deposit box ($50-200/year) is often more economical. Professional vaults become cost-effective for larger accumulations.",
     },
   ],
   "brand-differences": [
     {
-      question: "Which kilo bar brands are most recognized globally?",
-      answer: "LBMA-accredited refiners produce the most recognized kilo bars: PAMP Suisse and Valcambi (Switzerland), Argor-Heraeus (Switzerland), Perth Mint (Australia), Heraeus (Germany), and Royal Canadian Mint. These brands are accepted by dealers worldwide and typically command the best resale prices.",
+      question: "Which 1 oz bar brands are most recognized globally?",
+      answer: "LBMA-accredited refiners produce the most recognized bars: PAMP Suisse and Valcambi (Switzerland), Perth Mint (Australia), Royal Canadian Mint, Argor-Heraeus (Switzerland), and Heraeus (Germany). These brands are accepted by dealers worldwide and typically command the best resale prices.",
     },
     {
-      question: "Do different kilo bar brands have different premiums?",
-      answer: "Yes, there are slight premium differences. PAMP Suisse kilo bars with their Lady Fortuna design often command 0.5-1% higher premiums than generic LBMA bars. However, at the kilo size, brand premium differences are smaller than with 1 oz bars. The key is choosing LBMA-accredited products for maximum liquidity.",
+      question: "Do different 1 oz bar brands have different premiums?",
+      answer: "Yes, there are premium differences. PAMP Suisse bars with the Lady Fortuna design often command 1-2% higher premiums than generic bars. Perth Mint and Valcambi fall in between. The key is choosing LBMA-accredited products for maximum liquidity regardless of specific brand.",
     },
     {
-      question: "What security features do kilo bars have?",
-      answer: "Modern kilo bars from major refiners include: unique serial numbers, assay certificates, precision weight stamps, and refiner hallmarks. PAMP's Veriscan technology allows smartphone verification. Perth Mint bars include tamper-evident packaging. These features help authenticate bars and maintain resale value.",
+      question: "What security features do 1 oz bars have?",
+      answer: "Modern 1 oz bars from major refiners include: unique serial numbers, assay certificates in tamper-evident packaging, precision weight stamps, and refiner hallmarks. PAMP offers Veriscan smartphone verification. These features help authenticate bars and maintain resale value.",
     },
   ],
   "liquidity-considerations": [
     {
-      question: "How quickly can I sell a 1 kilo gold bar?",
-      answer: "Kilo bars from recognized LBMA refiners can typically be sold within 1-3 business days through established dealers. The process may take slightly longer than selling 1 oz bars due to the smaller buyer pool and larger transaction value. Having full documentation (assay certificate, purchase records) expedites the process.",
+      question: "How quickly can I sell a 1 oz gold bar?",
+      answer: "1 oz bars from recognized refiners can typically be sold same-day or within 1-2 business days through established dealers. The broad buyer pool for this size makes finding buyers straightforward. Having original packaging and documentation expedites the process.",
     },
     {
-      question: "Will I get a worse price selling a kilo bar than smaller bars?",
-      answer: "Not necessarily. In fact, kilo bars often have tighter bid-ask spreads (1-2%) than smaller bars (3-5%). While the buyer pool is smaller, institutional demand and dealer inventory needs create competitive markets. LBMA-accredited bars from major refiners consistently achieve strong buyback prices.",
+      question: "Will I get a good price selling a 1 oz bar?",
+      answer: "Yes, 1 oz bars from LBMA-accredited refiners receive competitive buyback offers. Expect to receive spot price minus a small spread (1-3%). Bars with intact packaging and documentation from recognized brands command the best prices. Getting quotes from multiple dealers ensures fair pricing.",
     },
     {
-      question: "What if I only need to liquidate part of my gold holdings?",
-      answer: "This is the key liquidity trade-off with kilo bars: you cannot partially liquidate a single bar. If you hold one kilo bar and need $20,000, you must sell the entire bar ({{CAPITAL_REQUIREMENT_PLUS}}) or seek other liquidity sources. Investors anticipating partial liquidation needs often maintain some smaller bars alongside their kilo holdings.",
+      question: "Is the 1 oz size more liquid than larger bars?",
+      answer: "Yes, the 1 oz size has the broadest buyer pool in the retail gold market. More individuals can afford to purchase at this price point, and dealers maintain consistent inventory needs. This liquidity advantage is one of the main reasons investors accept the higher premiums on 1 oz bars.",
     },
   ],
   "market-dynamics": [
     {
       question: "What causes gold prices to rise or fall?",
-      answer: "Gold prices respond to multiple factors: interest rates (higher rates typically pressure gold), dollar strength (inverse relationship), inflation expectations (gold as hedge), geopolitical uncertainty (safe haven demand), central bank buying/selling, and investment flows. No single factor dominates; price reflects the constantly shifting balance.",
+      answer: "Gold prices respond to multiple factors: interest rates (higher rates typically pressure gold), dollar strength (inverse relationship), inflation expectations (gold as hedge), geopolitical uncertainty (safe haven demand), central bank buying/selling, and investment flows. No single factor dominates.",
     },
     {
-      question: "How do Federal Reserve decisions affect kilo gold bar values?",
-      answer: "Fed policy significantly influences gold through interest rates and inflation expectations. Rate hikes increase gold's opportunity cost, typically pressuring prices. Rate cuts or quantitative easing tend to support gold. Kilo bar values move with spot prices, so Fed policy affects all gold holdings equally regardless of bar size.",
+      question: "How do Federal Reserve decisions affect 1 oz gold bar values?",
+      answer: "Fed policy significantly influences gold through interest rates and inflation expectations. Rate hikes increase gold's opportunity cost, typically pressuring prices. Rate cuts or quantitative easing tend to support gold. Your 1 oz bar values move with spot prices regardless of size.",
     },
     {
-      question: "Do kilo bar premiums change with market conditions?",
-      answer: "Yes, though less dramatically than smaller bars. During demand surges, 1 oz bar premiums might spike to 10%+, while kilo premiums might only expand to 4-5%. Kilo bar supply is more stable because institutional inventory is substantial. Premium stability is another advantage of the kilo format.",
+      question: "Do 1 oz bar premiums change with market conditions?",
+      answer: "Yes, premiums fluctuate with supply and demand for physical gold. During demand surges (market uncertainty, crisis events), 1 oz bar premiums can spike to 10%+ temporarily. During calm markets, premiums settle back to 3-5% for standard brands. Understanding this cycle helps with purchase timing.",
     },
   ],
   "spreads-explained": [
     {
-      question: "What is a good bid-ask spread for 1 kilo gold bars?",
-      answer: "Under normal market conditions, spreads of 1-2% for kilo bars from LBMA-accredited refiners represent competitive pricing. This is tighter than 1 oz bars (3-5%) and reflects the efficiency of the kilo bar market. If a dealer quotes significantly wider spreads, shop elsewhere.",
+      question: "What is a good bid-ask spread for 1 oz gold bars?",
+      answer: "Under normal market conditions, spreads of 3-5% for 1 oz bars from LBMA-accredited refiners represent competitive pricing. Generic bars may have wider spreads. If a dealer quotes significantly wider spreads for recognized brands, shop elsewhere.",
     },
     {
-      question: "How do I calculate my break-even point on a kilo bar?",
-      answer: "Add your purchase premium to the expected selling discount. If you pay 2% over spot and expect to receive 1% below spot when selling, you need 3% gold appreciation to break even. On a {{CAPITAL_REQUIREMENT}} kilo bar, that is roughly $2,000-$4,000 in gold price movement, more achievable than the 7-8% break-even typical of 1 oz bars.",
+      question: "How do I calculate my break-even point on a 1 oz bar?",
+      answer: "Add your purchase premium to the expected selling discount. If you pay 5% over spot and expect to receive 2% below spot when selling, you need 7% gold appreciation to break even. Understanding this helps set realistic expectations for your investment.",
     },
     {
-      question: "Do spreads vary by kilo bar brand?",
-      answer: "Yes, LBMA-accredited brands from major refiners (PAMP, Valcambi, Perth) trade with tighter spreads due to instant recognition and ready dealer markets. Lesser-known or generic bars may face wider spreads, potentially offsetting their lower purchase premiums. For kilo purchases, brand quality matters.",
+      question: "Do spreads vary by 1 oz bar brand?",
+      answer: "Yes, LBMA-accredited brands from major refiners (PAMP, Valcambi, Perth) trade with tighter spreads due to instant recognition and ready dealer markets. Generic or lesser-known bars may face wider spreads, potentially offsetting their lower purchase premiums.",
     },
   ],
   "authentication-guide": [
     {
-      question: "How do I verify a 1 kilo gold bar is authentic?",
-      answer: "Key verification methods: confirm the bar matches stated weight (1,000g ± tolerance), verify serial number with the refiner if possible, check assay certificate matches the bar, examine hallmarks and stamps for precision, use PAMP Veriscan or similar technology if available. For high-value purchases, consider professional XRF testing.",
+      question: "How do I verify a 1 oz gold bar is authentic?",
+      answer: "Key verification methods: confirm the bar matches stated weight (31.1035g), verify serial number if present, check assay certificate matches the bar, examine hallmarks for precision, use smartphone verification apps if available (PAMP Veriscan). For secondary market purchases, consider professional testing.",
     },
     {
-      question: "What security features should I look for on kilo bars?",
-      answer: "Look for: precision-stamped weight and purity marks, unique serial number, refiner logo/hallmark, assay certificate with matching details, and tamper-evident packaging when new. Premium refiners include features like micro-engraving and holographic elements. Documentation should accompany every legitimate kilo bar.",
+      question: "What security features should I look for on 1 oz bars?",
+      answer: "Look for: precision-stamped weight and purity marks, unique serial number (most branded bars), refiner logo/hallmark, assay certificate with matching details, and tamper-evident packaging. Premium refiners include features like micro-engraving and holographic elements.",
     },
     {
-      question: "Should I have kilo bars professionally authenticated?",
-      answer: "For secondary market purchases or bars without complete documentation, professional authentication is worthwhile. XRF (X-ray fluorescence) testing and ultrasonic testing can verify purity and detect counterfeits without damaging the bar. The ~$50-100 cost is trivial compared to the bar's value and provides peace of mind.",
+      question: "Should I have 1 oz bars professionally authenticated?",
+      answer: "For secondary market purchases without complete documentation, professional authentication is worthwhile. XRF testing can verify purity without damaging the bar. The modest cost provides peace of mind. Buying from reputable dealers with clear sourcing reduces authentication concerns.",
     },
   ],
   "institutional-vs-retail": [
     {
-      question: "What is LBMA accreditation and why does it matter for kilo bars?",
-      answer: "The London Bullion Market Association (LBMA) accredits refiners meeting strict quality standards. LBMA-accredited kilo bars are accepted by banks, institutions, and dealers worldwide without additional verification. This creates efficient global markets and ensures your bars maintain maximum resale value.",
+      question: "What is LBMA accreditation and why does it matter?",
+      answer: "The London Bullion Market Association (LBMA) accredits refiners meeting strict quality standards. LBMA-accredited bars are accepted by banks, institutions, and dealers worldwide without additional verification. This creates efficient global markets and ensures your bars maintain maximum resale value.",
     },
     {
-      question: "Are retail kilo bars different from institutional gold?",
-      answer: "Kilo bars from LBMA-accredited refiners are the same quality used by institutions. There is no 'retail grade' distinction. The kilo format is actually the standard for institutional trading in Asia and many markets. Retail investors buying LBMA kilo bars own institutional-quality gold.",
+      question: "Are retail 1 oz bars different from institutional gold?",
+      answer: "1 oz bars from LBMA-accredited refiners meet the same quality standards as institutional gold. The difference is format: institutions typically trade larger bars (400 oz good delivery bars), while 1 oz bars are sized for individual investors. Quality and purity are equivalent.",
     },
     {
       question: "Can I buy gold at institutional pricing?",
-      answer: "Retail investors pay slightly higher premiums than large institutional buyers due to smaller order sizes and higher per-transaction costs. However, kilo bars get you closer to institutional economics than any smaller format. Volume purchases or dealer relationships can further reduce premiums.",
+      answer: "Retail investors pay higher premiums than large institutional buyers due to smaller order sizes and higher per-transaction costs. However, buying from efficient online dealers and choosing larger quantities can reduce your effective premium closer to wholesale levels.",
     },
   ],
   "portfolio-allocation": [
     {
-      question: "What percentage of a portfolio should be in kilo gold bars?",
-      answer: "Conventional wisdom suggests 5-15% of a portfolio in precious metals as a diversifier and inflation hedge. The specific allocation depends on your risk tolerance, investment horizon, and overall financial situation. Kilo bars are appropriate when your gold allocation exceeds $50,000-$100,000, making premium efficiency valuable.",
+      question: "What percentage of a portfolio should be in gold bars?",
+      answer: "Conventional wisdom suggests 5-15% of a portfolio in precious metals as a diversifier and inflation hedge. The specific allocation depends on your risk tolerance, investment horizon, and overall financial situation. Consult a financial advisor for personalized guidance.",
     },
     {
-      question: "Should I buy kilo bars all at once or over time?",
-      answer: "Both approaches have merit. Purchasing in one transaction captures premium efficiency, as you pay one set of transaction costs. Dollar-cost averaging (buying over time) reduces timing risk but incurs multiple premiums. For kilo bars specifically, many investors save capital and make periodic larger purchases rather than frequent small ones.",
+      question: "Should I buy 1 oz bars all at once or over time?",
+      answer: "Both approaches have merit. Dollar-cost averaging (buying regularly over time) reduces timing risk and fits most budgets. Lump-sum buying captures current prices if you have capital available. Many investors combine approaches based on their circumstances.",
     },
     {
-      question: "How do kilo bars fit with other gold investments like ETFs?",
-      answer: "Kilo bars and gold ETFs serve different purposes. ETFs offer liquidity and easy trading but carry counterparty risk. Kilo bars provide direct ownership and wealth outside the financial system but are less liquid. Many investors use ETFs for tactical trading and kilo bars for long-term core holdings they intend to hold for years.",
+      question: "How do 1 oz bars fit with other gold investments like ETFs?",
+      answer: "1 oz bars and gold ETFs serve different purposes. ETFs offer liquidity and easy trading but carry counterparty risk. Physical bars provide direct ownership outside the financial system but are less liquid. Many investors use both: ETFs for tactical trading, physical bars for long-term core holdings.",
     },
   ],
   "first-time-buyers-guide": [
     {
-      question: "What is the typical process for buying a 1 kilo gold bar?",
-      answer: "The process typically involves: researching and selecting a reputable dealer, comparing prices and premiums, placing an order with a locked price, completing payment (usually wire transfer), and receiving insured delivery. The entire process from order to delivery usually spans five to ten business days depending on payment method and shipping.",
+      question: "What is the typical process for buying a 1 oz gold bar?",
+      answer: "The process typically involves: researching and selecting a reputable dealer, comparing prices and premiums, placing an order (price usually locked at order time), completing payment, and receiving insured delivery. Most online orders ship within 3-7 business days after payment clears.",
     },
     {
-      question: "What payment methods are accepted for kilo bar purchases?",
-      answer: "Wire transfer is the standard payment method for kilo bar transactions due to the high value involved. Personal checks may be accepted but require clearing periods of five to ten days. Credit cards are rarely accepted for amounts this large due to chargeback risks and processing limits. Some dealers accept cryptocurrency.",
+      question: "What payment methods are accepted for 1 oz bar purchases?",
+      answer: "Most dealers accept wire transfer, personal check (with clearing period), and credit/debit cards. Wire transfers often get lower prices (2-4% less than card prices). Credit cards offer convenience and buyer protection but cost more. Choose based on your priorities.",
     },
     {
-      question: "Why do kilo bar prices vary between dealers?",
-      answer: "Price variations reflect different business models, sourcing relationships, overhead costs, and profit margins. Volume dealers may offer lower premiums due to operational efficiency. Some dealers charge more but provide enhanced services or broader product selection. Always compare prices from multiple sources before purchasing.",
+      question: "Why do 1 oz bar prices vary between dealers?",
+      answer: "Price variations reflect different business models, sourcing relationships, overhead costs, and profit margins. Volume dealers may offer lower premiums through operational efficiency. Always compare total cost (bar price plus shipping) from multiple sources before purchasing.",
     },
   ],
   "tax-considerations": [
     {
       question: "How is physical gold taxed when sold?",
-      answer: "Physical gold is generally classified as a collectible for federal tax purposes. When sold for a gain, capital gains tax applies. The specific rates and rules depend on holding period, income level, and current tax legislation. State taxes add another layer of complexity. Consult a tax professional for guidance on your specific situation.",
+      answer: "Physical gold is generally classified as a collectible for federal tax purposes. Capital gains tax applies when sold for a profit. Specific rates and rules depend on holding period, income level, and current tax legislation. State taxes add complexity. Consult a tax professional for your situation.",
     },
     {
-      question: "Do I pay sales tax when buying a kilo gold bar?",
-      answer: "Sales tax treatment varies significantly by state. Some states exempt precious metals purchases entirely, others tax them at standard rates, and some have exemptions based on transaction size. Understanding your state's rules before purchasing can affect your total cost. A tax professional can clarify your state's current treatment.",
+      question: "Do I pay sales tax when buying a 1 oz gold bar?",
+      answer: "Sales tax treatment varies by state. Many states exempt precious metals purchases, others tax them, and some have exemptions based on transaction amount. Understanding your state's rules before purchasing affects your total cost. A tax professional can clarify current treatment.",
     },
     {
-      question: "Can I hold kilo gold bars in an IRA?",
-      answer: "Certain IRAs, often called Precious Metals IRAs or Gold IRAs, can hold physical gold including qualifying kilo bars. The gold must meet purity requirements and be held by an approved custodian. IRA ownership provides tax-advantaged growth but involves custodian fees and prevents personal possession while in the account.",
+      question: "Can I hold 1 oz gold bars in an IRA?",
+      answer: "Certain IRAs (Precious Metals IRAs or Gold IRAs) can hold physical gold including qualifying bars meeting purity requirements. The gold must be held by an approved custodian. IRA ownership provides tax-advantaged growth but involves custodian fees and prevents personal possession.",
     },
   ],
 };

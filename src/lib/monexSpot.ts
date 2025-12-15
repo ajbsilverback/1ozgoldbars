@@ -232,7 +232,7 @@ export type GoldSpotIndexSummary = MetalSpotIndexSummary;
 
 /**
  * Fetches the current Metal Spot Index from Monex API
- * Uses symbol from SITE_CONFIG.spotSymbol
+ * Uses GBXSPOT symbol for gold spot index
  * 
  * Uses cache: 'no-store' to ensure:
  * - Data is fetched fresh on each page load ONLY
@@ -242,7 +242,7 @@ export type GoldSpotIndexSummary = MetalSpotIndexSummary;
  * @returns Promise<MetalSpotIndexSummary | null> - The spot index data or null on error
  */
 export async function fetchMetalSpotIndex(): Promise<MetalSpotIndexSummary | null> {
-  const symbol = SITE_CONFIG.spotSymbol;
+  const symbol = "GBXSPOT";
   const apiUrl = getSpotApiUrl();
   
   try {

@@ -1,73 +1,29 @@
 /**
  * SITE CONFIGURATION - Single Source of Truth
  * 
- * Configuration for 1KiloGoldBars.com
+ * Configuration for 1ozgoldbars.com
  */
 
 export const SITE_CONFIG = {
-  // ============================================================
   // DOMAIN & BRANDING
-  // ============================================================
-  
-  /** Primary domain with https:// prefix */
-  domain: "https://www.1kilogoldbars.com",
-  
-  /** Canonical domain (usually same as domain) */
-  canonicalDomain: "https://www.1kilogoldbars.com",
-  
-  /** Brand name displayed in UI and metadata */
-  brandName: "1KiloGoldBars.com",
+  domain: "https://www.1ozgoldbars.com",
+  canonicalDomain: "https://www.1ozgoldbars.com",
+  brandName: "1ozGoldBars",
 
-  // ============================================================
   // PRODUCT DEFINITION
-  // ============================================================
-  
-  /** Primary product name */
-  primaryProduct: "1 kilo gold bars",
-  
-  /** Metal type: "gold" | "silver" | "platinum" | "palladium" */
+  primaryProduct: "1 oz gold bars",
   metal: "gold",
-  
-  /** Product form: "bars" | "coins" | "rounds" */
   form: "bars",
-  
-  /** Size or series identifier */
-  sizeOrSeries: "1 kilo",
+  sizeOrSeries: "1 oz",
+  troyOunces: 1.0,
 
-  /** Troy ounce equivalent */
-  troyOunces: 32.1507,
+  // MONEX PRICE SYMBOL
+  productSymbol: "GBOZ",
 
-  // ============================================================
-  // MONEX API SYMBOLS
-  // ============================================================
-  
-  /** 
-   * Product price symbol for Monex API
-   * GBX1K = 1 kilo gold bar
-   */
-  productSymbol: "GBX1K",
-  
-  /**
-   * Spot index symbol for Monex API (raw metal spot price)
-   * GBXSPOT = Gold Spot Index
-   */
-  spotSymbol: "GBXSPOT",
-
-  // ============================================================
-  // CONTENT & MESSAGING
-  // ============================================================
-  
-  /** Target audience description */
-  angle:
-    "serious investors and institutions seeking substantial gold positions with lowest premiums per ounce",
-
-  /** Array of relevant Monex.com links for citations */
-  monexLinks: [
-    "https://www.monex.com/gold/",
-    "https://www.monex.com/gold-prices/",
-    "https://www.monex.com/investing-in-gold/",
-    "https://www.monex.com/knowledge-base/gold-investing/",
-  ],
+  // FEATURES
+  features: {
+    resourcesEnabled: true,
+  },
 } as const;
 
 export type SiteConfig = typeof SITE_CONFIG;
@@ -80,8 +36,8 @@ export function getProductApiUrl(): string {
 }
 
 /**
- * Helper: Get Monex API URL for spot symbol
+ * Helper: Get Monex API URL for spot symbol (GBXSPOT)
  */
 export function getSpotApiUrl(): string {
-  return `https://api.monex.com/api/v2/Metals/spot/summary?metals=${SITE_CONFIG.spotSymbol}`;
+  return `https://api.monex.com/api/v2/Metals/spot/summary?metals=GBXSPOT`;
 }

@@ -33,7 +33,7 @@ export default async function LiveGbozSpotCard({ showCta = true }: LiveGbozSpotC
       {/* Header with live indicator */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl sm:text-2xl font-display font-semibold text-white">
-          Live 1 Kilo Gold Bar Price
+          Live 1 oz Gold Bar Price
         </h2>
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -51,7 +51,7 @@ export default async function LiveGbozSpotCard({ showCta = true }: LiveGbozSpotC
           <p className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight gold-text">
             {formatUSD(data.ask)}
           </p>
-          <p className="text-lg text-gray-400 mt-2">per kilo bar (32.15 oz)</p>
+          <p className="text-lg text-gray-400 mt-2">per 1 oz gold bar</p>
         </div>
       </div>
 

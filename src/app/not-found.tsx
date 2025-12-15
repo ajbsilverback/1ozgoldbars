@@ -18,13 +18,8 @@ export default function NotFound() {
           <Link href="/live-gold-prices" className="btn-secondary">
             View Gold Prices
           </Link>
-          <Link href="/resources" className="btn-secondary">
-            Browse Resources
-          </Link>
         </div>
       </div>
     </div>
   );
 }
-
-

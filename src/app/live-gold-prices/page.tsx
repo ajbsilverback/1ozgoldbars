@@ -10,16 +10,16 @@ import { pricesQA } from "@/data/qa-content";
 import { fetchProductSpot } from "@/lib/monexSpot";
 
 export const metadata: Metadata = {
-  title: "1 Kilo Gold Bar Price & Live Gold Spot Prices",
+  title: "1 oz Gold Bar Price | Live Gold Spot Prices & Premium Guide",
   description:
-    "Track live 1 kilo gold bar prices and gold spot prices. Real-time charts and market data for serious gold investors.",
+    "Track live 1 oz gold bar prices, understand spot price vs premium, and learn what to compare when buying. Independent educational resource for gold investors.",
   alternates: {
     canonical: `${SITE_CONFIG.canonicalDomain}/live-gold-prices`,
   },
   openGraph: {
-    title: "1 Kilo Gold Bar Price & Live Gold Spot Prices",
+    title: "1 oz Gold Bar Price | Live Gold Spot Prices & Premium Guide",
     description:
-      "Track live 1 kilo gold bar prices and gold spot prices. Real-time charts and market data for serious gold investors.",
+      "Track live 1 oz gold bar prices, understand spot price vs premium, and learn what to compare when buying.",
     url: `${SITE_CONFIG.domain}/live-gold-prices`,
   },
 };
@@ -30,9 +30,9 @@ export default async function PricesPage() {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "1 Kilo Gold Bar Price & Live Gold Spot Prices",
+    name: "1 oz Gold Bar Price | Live Gold Spot Prices & Premium Guide",
     description:
-      "Track live 1 kilo gold bar prices and gold spot prices. Real-time charts and market data for serious gold investors.",
+      "Track live 1 oz gold bar prices, understand spot price vs premium, and learn what to compare when buying.",
     url: `${SITE_CONFIG.domain}/live-gold-prices`,
     publisher: {
       "@type": "Organization",
@@ -47,18 +47,26 @@ export default async function PricesPage() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What determines the price of a 1 kilo gold bar?",
+        name: "What is a 1 oz gold bar worth?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The price of a 1 kilo gold bar consists of the spot price of gold multiplied by 32.1507 troy ounces, plus a premium that covers manufacturing, distribution, and dealer margins. Kilo bar premiums typically range from 1.5-3% over spot, the lowest of any common bar size.",
+          text: "A 1 oz gold bar is worth the current gold spot price plus a dealer premium, typically ranging from 3% to 8%. The spot price fluctuates continuously during market hours based on global supply and demand. Check live pricing on this page for current values.",
         },
       },
       {
         "@type": "Question",
-        name: "Why do 1 kilo gold bars have lower premiums than smaller bars?",
+        name: "Why is the price of a 1 oz gold bar higher than spot?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Kilo bars have lower premiums because manufacturing costs are spread across more gold content. Producing one kilo bar is more efficient than producing 32 individual 1 oz bars. The per-ounce production cost decreases with bar size.",
+          text: "The price above spot is called the premium. It covers the costs of refining, minting, assaying, packaging, shipping, and dealer margins. Premiums vary by refiner, dealer, and market conditions. The 1 oz size typically has premiums of 3-8% over spot.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do 1 oz gold bars have serial numbers?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Many 1 oz gold bars from major refiners include serial numbers and come with assay cards that document the bar's weight, purity, and unique identifier. However, not all bars have serial numbers. Generic bars from smaller refiners may not include this documentation.",
         },
       },
       {
@@ -69,15 +77,23 @@ export default async function PricesPage() {
           text: "Gold prices change continuously during market hours as the precious metals market operates nearly 24 hours a day, five days a week. Major price movements are influenced by currency fluctuations, central bank policies, geopolitical events, and supply and demand dynamics.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Is pricing the same at every dealer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No, pricing varies between dealers. While all dealers reference the same spot price, their premiums differ based on their business model, overhead costs, and competitive positioning. Always compare total prices (including shipping and fees) from multiple dealers before purchasing.",
+        },
+      },
     ],
   };
 
   const aiSummaryBullets = [
-    "This page displays live 1 kilo gold bar prices via Monex data",
+    "This page displays live 1 oz gold bar prices via Monex data",
     "Track gold spot prices per troy ounce for reference",
-    "Understand how spot prices relate to kilo bar retail pricing",
-    "Learn about premium structures: kilo bars have 1.5-3% premiums (lowest available)",
-    "Compare premiums across bar sizes (1 oz vs 10 oz vs kilo)",
+    "Understand how spot prices relate to 1 oz bar retail pricing",
+    "Learn about premium structures: 1 oz bars typically have 3-8% premiums",
+    "Compare what affects pricing before you buy",
   ];
 
   return (
@@ -97,7 +113,7 @@ export default async function PricesPage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-              <span className="gold-text">1 Kilo Gold Bar Price</span>
+              <span className="gold-text">1 oz Gold Bar Prices</span>
               <br />
               <span className="text-white">& Live Gold Spot Prices</span>
             </h1>
@@ -107,14 +123,14 @@ export default async function PricesPage() {
 
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed mt-6 text-left">
               Track live gold prices and understand how spot pricing affects 
-              the cost of 1 kilo gold bars. Use these tools to make informed 
-              decisions about your precious metals investments. Return to our{" "}
+              the cost of 1 oz gold bars. Use these tools to compare dealer 
+              pricing and make informed decisions. Return to our{" "}
               <Link href="/" className="text-bullion-gold hover:underline">
-                overview of 1 kilo gold bars
+                homepage
               </Link>{" "}
-              or explore our{" "}
-              <Link href="/resources" className="text-bullion-gold hover:underline">
-                educational resources
+              or check out our{" "}
+              <Link href="/where-to-buy" className="text-bullion-gold hover:underline">
+                buying guide
               </Link>.
             </p>
           </div>
@@ -124,7 +140,7 @@ export default async function PricesPage() {
       {/* Pricing Zone - Live Cards */}
       <section className="py-10 md:py-12 section-dark">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          {/* Live Kilo Gold Bar Price Card */}
+          {/* Live 1 oz Gold Bar Price Card */}
           <LiveGbozSpotCard showCta={false} />
 
           {/* Live Gold Spot Index Card */}
@@ -142,68 +158,80 @@ export default async function PricesPage() {
         </div>
       </section>
 
-      {/* Understanding Gold Prices */}
+      {/* Understanding Spot Price vs Premium */}
       <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-6 text-center">
-              Understanding <span className="gold-text">Kilo Bar Pricing</span>
+              Understanding <span className="gold-text">1 oz Gold Bar Pricing</span>
             </h2>
 
             <div className="prose prose-lg prose-invert max-w-none space-y-6">
               <div className="card">
                 <h3 className="text-2xl font-display font-semibold mb-4 text-bullion-gold">
-                  Spot Price vs. Kilo Bar Price
+                  Spot Price vs. Premium
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  When purchasing a 1 kilo gold bar, you&apos;ll pay a premium 
-                  above the calculated spot value (spot price × 32.1507 oz). 
-                  The spot price represents the current market rate for gold 
-                  traded in bulk on commodities exchanges.
+                  The <strong className="text-white">spot price</strong> is the 
+                  current market rate for one troy ounce of gold traded on 
+                  commodities exchanges. It reflects wholesale, bulk trading 
+                  between large institutions and changes continuously during 
+                  market hours.
                 </p>
-                <p className="text-gray-300 leading-relaxed">
-                  The kilo bar commands the <strong className="text-white">lowest 
-                  retail premium</strong> of common bar sizes, typically just 
-                  1.5-3% over spot. This premium covers refining, minting, 
-                  assaying, shipping, and dealer margins.
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  The <strong className="text-white">premium</strong> is the 
+                  amount above spot price that you pay when buying a physical 
+                  gold bar. For 1 oz gold bars, premiums typically range from 
+                  3% to 8% depending on the refiner, dealer, and market conditions.
                 </p>
+                <div className="bg-bullion-darker/50 rounded-lg p-4">
+                  <p className="text-gray-400 text-sm">
+                    <strong className="text-bullion-gold">Example:</strong> If 
+                    gold spot is $2,000 per ounce and the premium is 5%, you 
+                    would pay approximately $2,100 for a 1 oz gold bar (before 
+                    any shipping or payment fees).
+                  </p>
+                </div>
               </div>
 
               <div className="card">
                 <h3 className="text-xl md:text-2xl font-display font-semibold mb-4 text-bullion-gold">
-                  Why Kilo Bars Have the Lowest Premiums
+                  Why Premiums Change
                 </h3>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Premiums are not fixed. They fluctuate based on several factors:
+                </p>
                 <ul className="space-y-4 text-gray-300">
                   <li className="flex items-start">
                     <span className="text-bullion-gold mr-3">•</span>
                     <span>
-                      <strong className="text-white">Economy of Scale:</strong> Producing 
-                      one kilo bar is more efficient than producing 32+ individual 
-                      1 oz bars with the same total gold content.
+                      <strong className="text-white">Supply and Demand:</strong> When 
+                      demand for physical gold increases (often during market uncertainty), 
+                      premiums rise. When demand is low, premiums typically decrease.
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-bullion-gold mr-3">•</span>
                     <span>
-                      <strong className="text-white">Reduced Handling:</strong> Fewer 
-                      individual units to package, ship, and inventory reduces 
-                      per-ounce costs throughout the supply chain.
+                      <strong className="text-white">Refiner Reputation:</strong> Bars 
+                      from well-known, LBMA-accredited refiners often carry slightly 
+                      higher premiums due to broader recognition and easier resale.
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-bullion-gold mr-3">•</span>
                     <span>
-                      <strong className="text-white">Institutional Demand:</strong> Kilo 
-                      bars are the standard for institutions, creating efficient 
-                      markets with competitive pricing.
+                      <strong className="text-white">Dealer Competition:</strong> Different 
+                      dealers have different overhead costs and pricing strategies. 
+                      Shopping around can reveal significant premium differences.
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-bullion-gold mr-3">•</span>
                     <span>
-                      <strong className="text-white">Simpler Packaging:</strong> Less 
-                      elaborate packaging compared to premium 1 oz bars in 
-                      sealed assay cards.
+                      <strong className="text-white">Payment Method:</strong> Many 
+                      dealers offer lower prices for wire transfers or checks 
+                      compared to credit card payments.
                     </span>
                   </li>
                 </ul>
@@ -211,25 +239,229 @@ export default async function PricesPage() {
 
               <div className="card">
                 <h3 className="text-xl md:text-2xl font-display font-semibold mb-4 text-bullion-gold">
-                  Premium Comparison by Size
+                  What Buyers Should Compare
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-3">
-                  The premium savings on kilo bars are substantial when building 
-                  a significant gold position:
+                  When evaluating 1 oz gold bar prices, do not focus solely on 
+                  the listed bar price. Consider the total cost:
                 </p>
-                <div className="bg-bullion-darker/50 rounded-lg p-4">
-                  <p className="text-gray-400 text-sm mb-2">
-                    <strong className="text-bullion-gold">Example at $2,000/oz spot:</strong>
-                  </p>
-                  <ul className="text-gray-400 text-sm space-y-2">
-                    <li>• <strong className="text-white">32 × 1 oz bars (5% avg premium):</strong> ~$67,500</li>
-                    <li>• <strong className="text-white">3 × 10 oz bars + 2 × 1 oz (3% avg):</strong> ~$66,200</li>
-                    <li>• <strong className="text-white">1 × kilo bar (2% premium):</strong> ~$65,600</li>
-                    <li className="pt-2 border-t border-bullion-gold/20">
-                      <strong className="text-bullion-gold">Savings:</strong> ~$1,900 by choosing kilo over 1 oz bars
-                    </li>
-                  </ul>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="text-bullion-gold mr-3">•</span>
+                    <span>
+                      <strong className="text-white">Premium over spot:</strong> Calculate 
+                      the percentage above spot price to compare apples to apples.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-bullion-gold mr-3">•</span>
+                    <span>
+                      <strong className="text-white">Shipping and insurance:</strong> Some 
+                      dealers include free shipping; others charge separately.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-bullion-gold mr-3">•</span>
+                    <span>
+                      <strong className="text-white">Payment method fees:</strong> Credit 
+                      card convenience may cost 2-4% more than bank wire.
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-bullion-gold mr-3">•</span>
+                    <span>
+                      <strong className="text-white">Buyback spread:</strong> What will 
+                      the dealer pay when you sell back? This affects your true cost 
+                      of ownership.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Price Checklist */}
+      <section className="py-12 md:py-16 section-dark">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-6 text-center">
+              <span className="gold-text">Price Checklist</span> Before You Buy
+            </h2>
+            <p className="text-gray-400 text-center mb-8">
+              Use this checklist to ensure you are comparing prices accurately 
+              and not missing hidden costs.
+            </p>
+
+            <div className="space-y-4">
+              <div className="card p-5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-bullion-gold/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-bullion-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    Confirm Bar Weight
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Verify the listing is for exactly 1 troy ounce (31.1035 grams). 
+                    Some listings may use different weight measurements or include 
+                    fractional bars.
+                  </p>
+                </div>
+              </div>
+
+              <div className="card p-5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-bullion-gold/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-bullion-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    Verify Purity
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Standard investment-grade gold bars are .9999 fine (99.99% pure 
+                    gold). Some older or specialty bars may be .999 or .995. Know 
+                    what you are buying.
+                  </p>
+                </div>
+              </div>
+
+              <div className="card p-5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-bullion-gold/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-bullion-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    Add Shipping and Insurance
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Factor in shipping costs and confirm the shipment is fully 
+                    insured. A lower bar price with expensive shipping may cost 
+                    more than a slightly higher price with free shipping.
+                  </p>
+                </div>
+              </div>
+
+              <div className="card p-5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-bullion-gold/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-bullion-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    Check Payment Method Fees
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Compare prices for your preferred payment method. Wire transfer 
+                    prices are often 2-4% lower than credit card prices. Calculate 
+                    your actual total.
+                  </p>
+                </div>
+              </div>
+
+              <div className="card p-5 flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full bg-bullion-gold/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-bullion-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">
+                    Ask About Dealer Buyback Spread
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Understand what the dealer will pay when you eventually sell. 
+                    A dealer with a tight buyback spread (1-3% below spot) may be 
+                    better than one with a lower purchase price but wider spread.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* In-Page FAQs */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold mb-8 text-center">
+              <span className="gold-text">Common Questions</span> About 1 oz Gold Bar Prices
+            </h2>
+
+            <div className="space-y-6">
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  What is a 1 oz gold bar worth?
+                </h3>
+                <p className="text-gray-400">
+                  A 1 oz gold bar is worth the current gold spot price plus a 
+                  dealer premium, typically ranging from 3% to 8%. The spot price 
+                  fluctuates continuously during market hours based on global 
+                  supply and demand. Check the live pricing widgets above for 
+                  current values.
+                </p>
+              </div>
+
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Why is the price higher than spot?
+                </h3>
+                <p className="text-gray-400">
+                  The amount above spot is called the premium. It covers the 
+                  costs of refining raw gold into bars, minting, assaying, 
+                  packaging, shipping to dealers, and dealer profit margins. 
+                  Every physical gold product carries a premium; it is not 
+                  possible to buy retail gold at spot price.
+                </p>
+              </div>
+
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Do 1 oz gold bars have serial numbers?
+                </h3>
+                <p className="text-gray-400">
+                  Many 1 oz gold bars from major refiners include serial numbers 
+                  and come with assay cards that document the bar&apos;s weight, 
+                  purity, and unique identifier. However, not all bars have 
+                  serial numbers. Generic bars from smaller refiners may not 
+                  include this documentation. Serialized bars are generally 
+                  easier to resell.
+                </p>
+              </div>
+
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  How often does the price change?
+                </h3>
+                <p className="text-gray-400">
+                  Gold spot prices change continuously during market hours. The 
+                  precious metals market operates nearly 24 hours a day, five 
+                  days a week, with trading happening in markets around the 
+                  world. Dealer prices typically update throughout the day to 
+                  reflect spot movements.
+                </p>
+              </div>
+
+              <div className="card p-6">
+                <h3 className="text-lg font-semibold text-white mb-3">
+                  Is pricing the same everywhere?
+                </h3>
+                <p className="text-gray-400">
+                  No, pricing varies between dealers. While all dealers reference 
+                  the same spot price, their premiums differ based on their 
+                  business model, overhead costs, and competitive positioning. 
+                  Always compare total prices (including shipping and fees) from 
+                  multiple dealers before purchasing.
+                </p>
               </div>
             </div>
           </div>
@@ -273,21 +505,32 @@ export default async function PricesPage() {
       <section className="py-12 md:py-16 section-dark">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
-            Learn More About 1 Kilo Gold Bars
+            Ready to Buy 1 oz Gold Bars?
           </h2>
           <p className="text-gray-400 mb-6">
-            Explore our comprehensive{" "}
-            <Link href="/resources" className="text-bullion-gold hover:underline">
-              educational resources
+            Check out our{" "}
+            <Link href="/where-to-buy" className="text-bullion-gold hover:underline">
+              buying guide
             </Link>{" "}
-            to deepen your understanding of kilo bar investing, or return to our{" "}
-            <Link href="/" className="text-bullion-gold hover:underline">
-              1 kilo gold bar overview
-            </Link>.
+            to find reputable dealers and learn how to buy safely
+            {SITE_CONFIG.features.resourcesEnabled && (
+              <>
+                , or explore our{" "}
+                <Link href="/resources" className="text-bullion-gold hover:underline">
+                  educational resources
+                </Link>
+              </>
+            )}
+            .
           </p>
-          <Link href="/resources" className="btn-primary">
-            Explore Resources
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/where-to-buy" className="btn-primary">
+              Where to Buy
+            </Link>
+            <Link href="/" className="btn-secondary">
+              Return Home
+            </Link>
+          </div>
         </div>
       </section>
     </>
