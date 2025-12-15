@@ -650,7 +650,7 @@ export default function WhereToBuyPage() {
                   <a
                     href="https://www.monex.com/gold-prices/"
                     target="_blank"
-                    rel="noopener noreferrer nofollow"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center text-bullion-gold hover:text-bullion-goldLight transition-colors"
                   >
                     <span>Monex live gold prices</span>
