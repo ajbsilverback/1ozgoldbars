@@ -6,7 +6,7 @@ interface CapitalRequirementsCardProps {
 }
 
 /**
- * Server Component - Displays the approximate capital required to purchase a 1 kilo gold bar.
+ * Server Component - Displays the approximate capital required to purchase a 1 oz gold bar.
  * 
  * Can receive pre-fetched price data or will fetch its own if not provided.
  * NO polling, NO intervals - renders ONCE per page load only.
@@ -36,8 +36,8 @@ export default async function CapitalRequirementsCard({ priceData }: CapitalRequ
       </h3>
       <p className="text-gray-400 text-sm text-center mb-6">
         {hasValidPrice
-          ? "Based on current 1 kilo gold bar ask price:"
-          : "To purchase a single 1 kilo gold bar:"}
+          ? "Based on current 1 oz gold bar ask price:"
+          : "To purchase a single 1 oz gold bar:"}
       </p>
       <div className="text-center py-6 rounded-lg bg-bullion-gold/10 border border-bullion-gold/30">
         {hasValidPrice ? (
@@ -45,7 +45,7 @@ export default async function CapitalRequirementsCard({ priceData }: CapitalRequ
             <span className="text-4xl font-display font-bold gold-text">
               ≈ {roundToHundred(data.ask)}
             </span>
-            <p className="text-gray-400 text-sm mt-2">per kilo bar</p>
+            <p className="text-gray-400 text-sm mt-2">per 1 oz bar</p>
           </>
         ) : (
           <>

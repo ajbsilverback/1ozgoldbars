@@ -11,9 +11,8 @@
  * - {{CAPITAL_REQUIREMENT_PLUS}} -> Ask rounded with plus (e.g., "~$2,700+")
  * - {{LIQUIDITY_THRESHOLD}} -> Same as CAPITAL_REQUIREMENT_PLUS
  * - {{GBXSPOT}} -> Gold spot price per ounce (e.g., "$2,650")
- * - {{GBXSPOT_5PCT}} -> Spot + 5% premium (e.g., "$2,783")
- * - {{GBXSPOT_10X}} -> Spot × 10 for 10oz examples (e.g., "$26,500")
- * - {{GBXSPOT_2K_TO_SPOT}} -> Dynamic replacement showing current spot (e.g., "$2,650")
+ * - {{GBXSPOT_5PCT}} -> Spot + 5% premium for 1oz bar examples (e.g., "$2,783")
+ * - {{GBXSPOT_10X}} -> Spot × 10 for 10oz comparison examples (e.g., "$26,500")
  * 
  * IMPORTANT: This system is designed to be reusable across sites.
  * To adapt for a different product, only change siteConfig.ts - 
@@ -68,16 +67,13 @@ export type PriceTokenType =
   | "GBXSPOT"                       // $2,650 (gold spot price per ounce)
   | "GBXSPOT_5PCT"                  // $2,783 (spot + 5% premium)
   | "GBXSPOT_10X"                   // $26,500 (spot × 10 for 10oz comparisons)
-  | "GBXSPOT_2K_TO_SPOT"            // $2,650 (alias for GBXSPOT for migration)
-  | "GBXSPOT_KILO_2PCT"             // $86,900 (spot × 32.15 × 1.02 for kilo bar examples)
-  | "GBXSPOT_KILO_5PCT"             // $89,400 (spot × 32.15 × 1.05 for kilo bar vs 1oz comparison)
-  | "GBXSPOT_KILO_DIFF";            // $2,500 (difference between kilo at 5% vs 2% premium)
+  | "GBXSPOT_2K_TO_SPOT";           // $2,650 (alias for GBXSPOT for migration)
 
 /**
  * Regex pattern to match tokens in strings
  * Matches: {{TOKEN_NAME}}
  */
-const TOKEN_PATTERN = /\{\{(CAPITAL_REQUIREMENT|CAPITAL_REQUIREMENT_RANGE|CAPITAL_REQUIREMENT_PLUS|LIQUIDITY_THRESHOLD|GBXSPOT|GBXSPOT_5PCT|GBXSPOT_10X|GBXSPOT_2K_TO_SPOT|GBXSPOT_KILO_2PCT|GBXSPOT_KILO_5PCT|GBXSPOT_KILO_DIFF)\}\}/g;
+const TOKEN_PATTERN = /\{\{(CAPITAL_REQUIREMENT|CAPITAL_REQUIREMENT_RANGE|CAPITAL_REQUIREMENT_PLUS|LIQUIDITY_THRESHOLD|GBXSPOT|GBXSPOT_5PCT|GBXSPOT_10X|GBXSPOT_2K_TO_SPOT)\}\}/g;
 
 /**
  * Extended price data that can include both product prices and spot index
@@ -119,9 +115,6 @@ export function resolveToken(
       return "current spot price";
     }
 
-    // Kilo bar constants
-    const KILO_OZ = 32.15; // troy ounces per kilo
-
     switch (tokenType) {
       case "GBXSPOT":
       case "GBXSPOT_2K_TO_SPOT":
@@ -132,20 +125,6 @@ export function resolveToken(
 
       case "GBXSPOT_10X":
         return formatSpotPrice(spotPrice * 10);
-
-      case "GBXSPOT_KILO_2PCT":
-        // Kilo bar at 2% premium: spot × 32.15 × 1.02
-        return formatSpotPrice(Math.round(spotPrice * KILO_OZ * 1.02 / 100) * 100);
-
-      case "GBXSPOT_KILO_5PCT":
-        // Same gold content as 1oz bars at 5% average premium: spot × 32.15 × 1.05
-        return formatSpotPrice(Math.round(spotPrice * KILO_OZ * 1.05 / 100) * 100);
-
-      case "GBXSPOT_KILO_DIFF":
-        // Difference between kilo at 5% premium vs 2% premium
-        const at2pct = spotPrice * KILO_OZ * 1.02;
-        const at5pct = spotPrice * KILO_OZ * 1.05;
-        return formatSpotPrice(Math.round((at5pct - at2pct) / 100) * 100);
 
       default:
         return formatSpotPrice(spotPrice);

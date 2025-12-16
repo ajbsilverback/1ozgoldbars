@@ -1,6 +1,5 @@
 /**
  * Resource definitions for 1 oz Gold Bars educational content
- * Category system matches 1kilo pill taxonomy
  */
 
 export type CategorySlug = 

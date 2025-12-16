@@ -3,16 +3,16 @@ import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About | 1KiloGoldBars.com",
+  title: `About | ${SITE_CONFIG.brandName}`,
   description:
-    "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars. We do not sell precious metals or provide financial advice.",
+    `Learn about ${SITE_CONFIG.brandName}, an independent educational resource about 1 oz gold bars. We do not sell precious metals or provide financial advice.`,
   alternates: {
     canonical: `${SITE_CONFIG.canonicalDomain}/about`,
   },
   openGraph: {
-    title: "About | 1KiloGoldBars.com",
+    title: `About | ${SITE_CONFIG.brandName}`,
     description:
-      "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars.",
+      `Learn about ${SITE_CONFIG.brandName}, an independent educational resource about 1 oz gold bars.`,
     url: `${SITE_CONFIG.domain}/about`,
   },
 };
@@ -21,9 +21,9 @@ export default function AboutPage() {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About 1KiloGoldBars.com",
+    name: `About ${SITE_CONFIG.brandName}`,
     description:
-      "Learn about 1KiloGoldBars.com, an independent educational resource about 1 kilo gold bars.",
+      `Learn about ${SITE_CONFIG.brandName}, an independent educational resource about 1 oz gold bars.`,
     url: `${SITE_CONFIG.domain}/about`,
     publisher: {
       "@type": "Organization",
@@ -60,16 +60,15 @@ export default function AboutPage() {
               </h2>
               <p className="text-gray-300 leading-relaxed mb-4">
                 {SITE_CONFIG.brandName} is an independent educational website
-                dedicated to helping serious investors understand{" "}
-                {SITE_CONFIG.primaryProduct}, the preferred choice for those 
-                seeking substantial gold positions with the lowest premiums 
-                per ounce.
+                dedicated to helping individual investors understand{" "}
+                {SITE_CONFIG.primaryProduct}, the most accessible and liquid 
+                format for retail gold ownership.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 Our mission is to provide clear, unbiased information about 
-                kilo bar investing, including pricing mechanics, storage 
-                requirements, refiner comparisons, and the trade-offs between 
-                bar sizes.
+                1 oz gold bar investing, including pricing mechanics, storage 
+                options, refiner comparisons, and how 1 oz bars compare to 
+                other gold formats.
               </p>
             </section>
 
@@ -130,8 +129,8 @@ export default function AboutPage() {
                 <li className="flex items-start gap-3">
                   <span className="text-bullion-gold">•</span>
                   <span>
-                    <strong className="text-white">1 Kilo Gold Bar price</strong> (current
-                    ask price for a 1 kg gold bar)
+                    <strong className="text-white">1 oz Gold Bar price</strong> (current
+                    ask price for a 1 oz gold bar)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
