@@ -3,14 +3,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_CONFIG } from "@/lib/siteConfig";
 import { resources1oz, getResource1ozBySlug, getResources1ozByCategory, Resource1oz } from "@/data/resources-1oz";
-import { getArticleContent } from "@/data/resources-1oz-content";
+import { getArticleContent, ArticleContent } from "@/data/resources-1oz-content";
 import { getResourceFAQs } from "@/data/resources-1oz-faq";
 import { buildResourceSchemas } from "@/lib/schema";
 import { parseInlineLinks } from "@/lib/parseLinks";
+import { fetchProductSpot, fetchMetalSpotIndex } from "@/lib/monexSpot";
+import { replaceTokens } from "@/lib/priceTokens";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+// Force dynamic rendering since we fetch live price data
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return resources1oz.map((resource) => ({
@@ -78,6 +83,25 @@ function getRelatedResources(current: Resource1oz, count: number = 4): Resource1
   return related.slice(0, count);
 }
 
+// Process article content to replace price tokens with live values
+function processArticleContent(
+  content: ArticleContent | undefined,
+  priceData: Awaited<ReturnType<typeof fetchProductSpot>>,
+  spotIndexData: Awaited<ReturnType<typeof fetchMetalSpotIndex>>
+): ArticleContent | undefined {
+  if (!content) return undefined;
+  
+  return {
+    ...content,
+    quickSummary: replaceTokens(content.quickSummary, priceData, {}, spotIndexData),
+    keyTakeaways: content.keyTakeaways.map(t => replaceTokens(t, priceData, {}, spotIndexData)),
+    sections: content.sections.map(section => ({
+      ...section,
+      paragraphs: section.paragraphs.map(p => replaceTokens(p, priceData, {}, spotIndexData)),
+    })),
+  };
+}
+
 export default async function ResourceArticlePage({ params }: Props) {
   // Check feature flag first
   if (!SITE_CONFIG.features.resourcesEnabled) {
@@ -92,8 +116,15 @@ export default async function ResourceArticlePage({ params }: Props) {
     notFound();
   }
 
-  // Get article content and FAQ entries
-  const content = getArticleContent(slug);
+  // Fetch price data for token replacement
+  const [priceData, spotIndexData] = await Promise.all([
+    fetchProductSpot(),
+    fetchMetalSpotIndex(),
+  ]);
+
+  // Get article content and FAQ entries, process tokens
+  const rawContent = getArticleContent(slug);
+  const content = processArticleContent(rawContent, priceData, spotIndexData);
   const faqEntries = getResourceFAQs(slug);
   const relatedResources = getRelatedResources(resource, 4);
 

@@ -23,7 +23,7 @@ const articleContents: Record<string, ArticleContent> = {
         content: [
           "When purchasing gold bars, you pay a premium above the spot price of gold. This premium covers refining, minting, assaying, distribution, and dealer margins. For 1 kilo gold bars, these premiums are remarkably low, typically just 1.5-3% above spot price under normal market conditions.",
           "The economics are straightforward: producing one kilo bar (32.15 oz) is vastly more efficient than producing 32 individual 1 oz bars with equivalent total gold content. The refining process is the same, but minting, packaging, handling, and distribution costs are incurred once rather than 32 times.",
-          "This efficiency translates directly to savings for investors. At $2,000/oz spot, a kilo bar at 2% premium costs approximately $65,600. The same gold content purchased as 1 oz bars at 5% average premium would cost around $67,500, a difference of nearly $2,000 on a single purchase.",
+          "This efficiency translates directly to savings for investors. At {{GBXSPOT}}/oz spot, a kilo bar at 2% premium costs approximately {{GBXSPOT_KILO_2PCT}}. The same gold content purchased as 1 oz bars at 5% average premium would cost around {{GBXSPOT_KILO_5PCT}}, a difference of nearly {{GBXSPOT_KILO_DIFF}} on a single purchase.",
         ],
         subheading: "Components of Kilo Bar Premiums",
         subcontent: [

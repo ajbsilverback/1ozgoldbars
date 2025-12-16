@@ -127,7 +127,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "Calculating Total Cost",
         paragraphs: [
-          "To calculate what you will pay for a 1 oz gold bar, multiply the spot price by (1 + premium percentage). If spot is $2,000 and the premium is 5%, the bar costs $2,100. Remember to factor in shipping and any applicable taxes.",
+          "To calculate what you will pay for a 1 oz gold bar, multiply the spot price by (1 + premium percentage). If spot is {{GBXSPOT}} and the premium is 5%, the bar costs {{GBXSPOT_5PCT}}. Remember to factor in shipping and any applicable taxes.",
           "When selling, you receive the spot price minus a dealer spread. The spread compensates the dealer for their costs and risk. Typical buy-back spreads range from 1-3% below spot for standard bars from recognized refiners.",
         ],
       },
@@ -253,14 +253,14 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "Capital Requirements",
         paragraphs: [
-          "A 10 oz gold bar requires roughly ten times the capital of a 1 oz bar. At $2,000 per ounce spot, that means approximately $20,000 versus $2,000. This higher entry point limits accessibility for many buyers.",
+          "A 10 oz gold bar requires roughly ten times the capital of a 1 oz bar. At {{GBXSPOT}} per ounce spot, that means approximately {{GBXSPOT_10X}} versus {{GBXSPOT}}. This higher entry point limits accessibility for many buyers.",
           "The 1 oz format allows for gradual accumulation. You can buy one bar per month or quarter, spreading purchases over time. This approach can help manage timing risk in volatile markets.",
         ],
       },
       {
         heading: "Flexibility and Liquidity",
         paragraphs: [
-          "Smaller bars offer more flexibility when selling. If you need $2,000, you can sell a single 1 oz bar. With a 10 oz bar, you must sell the entire bar or find a dealer willing to buy partial positions (rare).",
+          "Smaller bars offer more flexibility when selling. If you need {{GBXSPOT}}, you can sell a single 1 oz bar. With a 10 oz bar, you must sell the entire bar or find a dealer willing to buy partial positions (rare).",
           "The buyer pool for 1 oz bars is larger than for 10 oz bars. More individual investors can afford the 1 oz size, which can make finding a buyer easier when you decide to sell.",
         ],
       },
@@ -561,7 +561,7 @@ export const resourcesContent: Record<string, ArticleContent> = {
       {
         heading: "What Is a Premium",
         paragraphs: [
-          "The premium is the amount you pay above the spot price of gold when purchasing a bar. If gold spot is $2,000 per ounce and you pay $2,100 for a 1 oz bar, the premium is $100 or 5%. This markup covers refining, fabrication, distribution, and dealer margin.",
+          "The premium is the amount you pay above the spot price of gold when purchasing a bar. If gold spot is {{GBXSPOT}} per ounce and you pay {{GBXSPOT_5PCT}} for a 1 oz bar, the premium is 5%. This markup covers refining, fabrication, distribution, and dealer margin.",
           "Premiums are a normal part of physical gold ownership. They exist because turning raw gold into investment-grade bars requires significant processing and creates costs that must be recovered.",
         ],
       },

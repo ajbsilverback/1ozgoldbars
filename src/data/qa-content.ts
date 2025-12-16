@@ -4,9 +4,11 @@ import { QAItem } from "@/components/QASection";
  * FAQ Content with Dynamic Price Tokens
  * 
  * Supported tokens (replaced at render time with live prices):
- * - {{OZ1_PRICE}}        -> "~$2,100" (1 oz bar ask price rounded)
- * - {{OZ1_PRICE_RANGE}}  -> "~$2,000-$2,200" (1 oz bar price range)
- * - {{SPOT_PRICE}}       -> "~$2,000" (spot price per ounce)
+ * - {{CAPITAL_REQUIREMENT}}     -> "~$2,700" (1 oz bar ask price rounded)
+ * - {{CAPITAL_REQUIREMENT_RANGE}} -> "~$2,600-$2,800" (1 oz bar price range)
+ * - {{GBXSPOT}}                 -> "$2,650" (gold spot price per ounce)
+ * - {{GBXSPOT_5PCT}}            -> "$2,783" (spot + 5% premium)
+ * - {{GBXSPOT_10X}}             -> "$26,500" (spot × 10 for 10oz examples)
  */
 
 export const homeQA: QAItem[] = [
@@ -35,7 +37,7 @@ export const homeQA: QAItem[] = [
 export const pricesQA: QAItem[] = [
   {
     question: "What is the relationship between spot price and 1 oz gold bar prices?",
-    answer: "The 1 oz bar price equals the current spot price plus a dealer premium, typically 3-8%. For example, if spot is $2,000 and the premium is 5%, you would pay approximately $2,100 per bar. This premium covers refining, minting, packaging, shipping, and dealer margins.",
+    answer: "The 1 oz bar price equals the current spot price plus a dealer premium, typically 3-8%. For example, if spot is {{GBXSPOT}} and the premium is 5%, you would pay approximately {{GBXSPOT_5PCT}} per bar. This premium covers refining, minting, packaging, shipping, and dealer margins.",
   },
   {
     question: "Why do premiums vary between dealers?",

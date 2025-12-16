@@ -7,7 +7,7 @@ import QASection from "@/components/QASection";
 import LiveGbozSpotCard from "@/components/LiveGbozSpotCard";
 import LiveGoldSpotIndexCard from "@/components/LiveGoldSpotIndexCard";
 import { pricesQA } from "@/data/qa-content";
-import { fetchProductSpot } from "@/lib/monexSpot";
+import { fetchProductSpot, fetchMetalSpotIndex, formatUSD } from "@/lib/monexSpot";
 
 export const metadata: Metadata = {
   title: "1 oz Gold Bar Price | Live Gold Spot Prices & Premium Guide",
@@ -26,7 +26,15 @@ export const metadata: Metadata = {
 
 export default async function PricesPage() {
   // Fetch price data once for the entire page
-  const priceData = await fetchProductSpot();
+  const [priceData, spotIndexData] = await Promise.all([
+    fetchProductSpot(),
+    fetchMetalSpotIndex(),
+  ]);
+  
+  // Calculate dynamic spot price values for the example
+  const spotPrice = spotIndexData?.last || spotIndexData?.ask || 0;
+  const spotPriceFormatted = spotPrice > 0 ? formatUSD(spotPrice).replace(".00", "") : "$2,000";
+  const spotPlus5Pct = spotPrice > 0 ? formatUSD(spotPrice * 1.05).replace(".00", "") : "$2,100";
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -187,8 +195,8 @@ export default async function PricesPage() {
                 <div className="bg-bullion-darker/50 rounded-lg p-4">
                   <p className="text-gray-400 text-sm">
                     <strong className="text-bullion-gold">Example:</strong> If 
-                    gold spot is $2,000 per ounce and the premium is 5%, you 
-                    would pay approximately $2,100 for a 1 oz gold bar (before 
+                    gold spot is {spotPriceFormatted} per ounce and the premium is 5%, you 
+                    would pay approximately {spotPlus5Pct} for a 1 oz gold bar (before 
                     any shipping or payment fees).
                   </p>
                 </div>
@@ -469,7 +477,7 @@ export default async function PricesPage() {
       </section>
 
       {/* Q&A Section */}
-      <QASection items={pricesQA} includeSchema={false} priceData={priceData} />
+      <QASection items={pricesQA} includeSchema={false} priceData={priceData} spotIndexData={spotIndexData} />
 
       {/* Monex Research Link */}
       <section className="py-10 md:py-12">

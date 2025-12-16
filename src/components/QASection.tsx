@@ -1,5 +1,5 @@
 import { SITE_CONFIG } from "@/lib/siteConfig";
-import { ProductSpotSummary } from "@/lib/monexSpot";
+import { ProductSpotSummary, MetalSpotIndexSummary } from "@/lib/monexSpot";
 import { replaceTokens } from "@/lib/priceTokens";
 
 export interface QAItem {
@@ -12,17 +12,20 @@ interface QASectionProps {
   includeSchema?: boolean;
   /** Optional price data for resolving dynamic tokens in answers */
   priceData?: ProductSpotSummary | null;
+  /** Optional spot index data for GBXSPOT tokens */
+  spotIndexData?: MetalSpotIndexSummary | null;
 }
 
 export default function QASection({ 
   items, 
   includeSchema = true,
-  priceData = null 
+  priceData = null,
+  spotIndexData = null 
 }: QASectionProps) {
   // Process items to replace tokens with dynamic values
   const processedItems = items.map((item) => ({
     question: item.question,
-    answer: replaceTokens(item.answer, priceData),
+    answer: replaceTokens(item.answer, priceData, {}, spotIndexData),
   }));
 
   const faqSchema = {
